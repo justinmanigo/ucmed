@@ -1,0 +1,533 @@
+h2{
+ background:;
+    margin-top: 0;
+    height: 100px;
+    position: fixed;
+    width: 20%;
+    
+}
+
+
+#logo{
+    margin-left: 40px;
+   height: 100%;
+}
+
+
+nav{
+    
+    width: 80%;
+    height: 80%;
+    margin-left: 15%;
+margin-top: -2%;
+}
+
+
+.dropdown{
+    
+    margin-left: 450px;
+}
+ 
+
+
+.content{
+	background-color:#fffefe ; /*#eaeaea*/ /*#eaeaea*/
+	height: 100%;
+	padding-top: 7em;
+	
+	position: relative;
+	left: 70px;
+	overflow: auto;
+    margin-left: ;
+    background-image: url('../img/viewpt.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+}
+#name{
+    margin-top:-2em;
+}
+
+.whole{
+    width: 95%;
+    
+}
+
+ .searchbar{
+            font-size: 15px !important;
+            height: 35px;
+            padding: 4px;
+        }
+        @font-face {
+          font-family: Champagne-&-Limousines-Bold;
+          src: url('fonts/Champagne & Limousines Bold.ttf');
+        }
+        @font-face {
+          font-family: Champagne-&-Limousines;
+          src: url('fonts/Champagne & Limousines.ttf');
+        }
+        @font-face {
+          font-family: Amble;
+          src: url('fonts/Amble-Regular-webfont.ttf');
+        }
+        body{
+            font-family: Amble !important;
+        }
+
+        .aplabel{
+            padding-left: 10px;
+        }
+
+        .apdesc{
+            width: 13em;
+            border-radius: 0.4em;
+            border: 2px solid #cccccc;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+        }
+        .apdesc2{
+            width: 4em;
+            border-radius: 0.4em;
+            border: 2px solid #cccccc;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+        }
+
+        .apdesc:focus{
+            border: 2px solid #4da6ff;
+        }
+        .apdesc2:focus{
+            border: 2px solid #4da6ff;
+        }
+
+
+        .box1{
+          border: solid 1px #000000;
+          border-radius: 0.8em;
+          min-height: xxx;
+          overflow: hidden;
+          padding: 1em;
+         margin-top: 2em;
+          width: 25em;
+          margin-bottom: 10px !important;
+          padding-bottom: 10px;
+         position: fixed;
+            margin-left:4em;
+        }
+
+        .box2{
+                  margin-left: 20px !important;
+                  border: solid 1px #6CE3AD;
+                  border-radius: 0.8em;
+                  height: 200px;
+                  overflow: hidden;
+                  padding: 2em;
+                 margin-top: 0.2em !important;
+                 width: 28em !important;
+                 margin-bottom: 30px !important;
+        }
+
+        .test{
+                 margin-left: 10px !important;
+                  border: solid 1px #6CE3AD;
+                  border-radius: 0.8em;
+                  height: 200px;
+                  overflow: hidden;
+                  padding: 2em;
+                 margin-top: 0.2em !important;
+                 width: 28em !important;
+                 margin-bottom: px !important;
+            
+            
+        }
+
+
+
+
+    
+
+        .box3{
+                  margin-left: 25px;
+                  border: solid 1px #6CE3AD;
+                  border-radius: 0.8em;
+                  overflow: hidden;
+                  padding: 2em;
+                  padding-bottom: 10px;
+                 margin-top: 0px;
+                 min-height: xxx;
+                 margin-bottom: 10px !important;
+                 width: 45em;
+        }
+
+        .box4{
+                 margin-left: 25px;
+                  border: solid 1px #6CE3AD;
+                  border-radius: 0.8em;
+                  overflow: hidden;
+                  padding: 2em;
+                  padding-bottom: 10px;
+                 margin-top: 4px;
+                 width: 45em;
+                  margin-bottom: 30px !important;
+                  height: 240px;
+                  padding-top: 5px;
+        }
+
+        .in{
+                  margin-left: 10px !important;
+                  border: solid 1px #6CE3AD;
+                  border-radius: 0.8em;
+                  height: 360px;
+                  overflow: hidden;
+                  padding: 2em;
+                 margin-top: 2em !important;
+                 width: 28em !important;
+                 margin-bottom: 30px !important;
+                
+        }
+
+
+        .out{
+                  margin-left: 51% !important;
+                  border: solid 1px #6CE3AD;
+                  border-radius: 0.8em;
+                  height: 250px;
+                  overflow: hidden;
+                  padding: 2em;
+                 margin-top: 2em !important;
+                 width: 28em !important;
+                 margin-bottom: 30px !important;
+                position: fixed;
+        }
+
+
+        .disease{
+                  margin-left: 33%; !important;
+                  border: solid 1px #6CE3AD;
+                  border-radius: 0.8em;
+                  height: 350px;
+                  overflow: hidden;
+                  padding: 2em;
+                 margin-top: 2em  !important;
+                 width: 26em !important;
+                 margin-bottom: 30px !important;
+            
+        }
+
+     
+        .buts{
+          margin-top: -180px;
+          margin-left: 0px;
+        }
+         .submitpatient{
+          margin-top: 10px;
+          margin-left: -165px;
+          height: 50px !important;
+          width: 160px;
+          font-size: 17px !important;
+         }
+         #glosub{
+          border: 1px solid #2797c6;
+          background-color: transparent;
+          margin-left: -81px;
+          color: #2797c6;
+
+        }
+        #glosub:hover {
+          background: #42bff4;
+        }
+
+        #op, #op1{
+          margin-left: 26.5%;
+        }
+
+        #op1{
+          margin-left: 23.5%;
+        }
+        .sub .btn{
+          border: 2px solid #6CE3AD;
+          background-color: transparent;
+          color: #00bd9c;
+            margin-top:15%;
+            margin-right: 40%;
+            float:right;
+            height:47px;
+            width:20%;
+            
+            
+            
+        }
+
+        .sub .btn:hover {
+            background: #6CE3AD;
+            color:white;
+
+        }
+
+        
+select{
+    border-radius: 10px;
+    width: 100px;
+}
+        
+       /*-----------------------------Side Bar-----------------------------*/
+.sidebar{
+	background:  #0d0d26;
+	height: 100%;
+	padding-top: 1em;  
+	padding-left: 1em;
+    margin-top: 3em;
+	position: fixed;
+	top:4em;
+	box-shadow: 1px 0 0 #1e2c3a;
+    width: 22em;
+	
+}
+
+.sidebar-outer {
+    position: relative;
+    margin-left: -0.4em;
+}
+
+.info{
+	margin-top: -4em;
+	margin-left: 5.5em;
+	text-align: left;
+}
+
+
+#link{
+	text-decoration: none;
+	
+}
+
+#link div{
+	padding-top: 1.5em;
+	padding-bottom: 1em;
+	margin-left: 0.12em;
+	width:15em;
+	color: white;
+}
+
+#link:hover div{
+	background-color: #808080;
+	transition: 0.5s;
+	color: white;	
+	opacity: 1.0;
+	width: -50em;
+
+}
+
+
+#myBtn1{
+	text-decoration: none;
+	
+}
+
+#myBtn1 div{
+	padding-top: 1.5em;
+	padding-bottom: 1em;
+	margin-left: 0.12em;
+	width:15em;
+	color: white;
+}
+
+#myBtn1:hover div{
+	background-color: #808080;
+	transition: 0.5s;
+	color: white;	
+	opacity: 1.0;
+	width: -50em;
+    cursor:pointer; 
+    
+
+}
+
+#mymodal{
+    background-image: url(img/motd.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.modal-content{
+    margin-top: 10px;
+      background-image: url('../img/motd.png');
+    height:200px;
+}
+
+
+.active{
+	background-color:#8c8c8c!important;
+	color: white!important;
+}
+
+#bb{
+	margin-left: -10px;
+	border-style: solid white 0.5px;
+}
+.navheight{
+	height: 150px;
+	font-size: 20px;
+	font-family: century gothic;
+}
+
+.centertext{
+	margin-top: 22px;
+}
+
+
+/*datatable*/
+
+/*--------------------Content: ADD PATIENT-------------------*/
+.TTstatus, {
+	margin-left: 70px;
+
+}
+
+#ttstat{
+	border: 0.5px solid #929292;
+}
+
+#preid{
+	border: 0.5px solid #929292;
+	margin-top: 20px;
+}
+
+.prebox .btn{
+	border: 1px solid #00bd9c;
+    background-color: transparent;
+    color: #00bd9c;
+    font-size: 14px;
+    margin-top: -2px !important ;
+
+}
+
+.prebox .btn:hover {
+    background: #6CE3AD;
+    color:white;
+
+}
+
+.prebox{
+	border: solid 1px #929292;
+    border-radius: 0.8em;
+    min-height: xxx;
+    overflow: hidden;
+    padding: 2em;
+    margin-top: -0.2em;
+    width: 36em;
+}
+
+.postbox{
+	border: solid 1px #929292;
+    border-radius: 0.8em;
+    min-height: xxx;
+    overflow: hidden;
+    padding: 2em;
+    margin-top: -0.2em;
+    width: 37em !important;
+    margin-left: 15px;
+}
+
+.postbox .btn{
+	border: 1px solid #00bd9c;
+    background-color: transparent;
+    color: #00bd9c;
+    font-size: 14px;
+    margin-top: -2px !important ;
+
+
+}
+.postbox .btn:hover {
+    background: #6CE3AD;
+    color:white;
+
+}
+
+
+.extra{
+         width: 6em;
+        border-radius: 0.4em;
+        border: 2px solid #cccccc;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        outline: none;
+     }
+.apdesc:focus{
+        border: 2px solid #00bd9c;
+ }
+
+
+.rawinfo{
+	width: 30em;
+    padding: 0.1em 1em;
+    box-sizing: border-box;
+    border: 2px solid #cccccc;
+    border-radius: 0.5em;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.rawinfo:focus{
+	 border: 2px solid #d9a7a8;
+}
+
+
+.rawlabel{
+	display: inline-block;
+    width: 15em;
+    text-align: left;
+    font-size: 0.8em;
+}
+
+.rawicon{
+	margin-right: 0.5em;
+}
+
+.rawform{
+	font-size: 1.4em;
+}
+
+.rc1{
+	margin-left: -0.2em;
+}
+
+.rc2{
+	margin-left: 0.55em;
+}
+
+.rawdimension{
+	font-size: 0.8em;
+	letter-spacing: 2px;
+	color: #999999;
+	margin-bottom: 1.5em;
+}
+
+.prodbtn{
+	border: noneprevio;
+	background: #a22327;
+	font-size: 0.8em;
+	letter-spacing: 2px;
+	color: inherit;
+	cursor: pointer;
+	padding: 1em 3.5em;
+	display: inline-block;	
+	margin-left: 35.5em;
+	margin-top: 3em;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.pc2{
+	margin-left: 0.2em;
+}
+/*------------------------------------------------------------------*/
+
+

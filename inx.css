@@ -1,0 +1,49 @@
+body{
+
+    background: lightgreen;
+}
+
+#logo{
+    height: 250px;
+
+    margin-top: 15%;
+}
+
+
+
+
+
+
+#create{
+    margin-top: 5%;
+   
+}
+
+form input:focus {
+  background-color: white;
+  
+  color: black;
+}
+
+
+#register{
+	background-color: ; /*#eaeaea*/
+	height: 100%;
+	padding-top: 0em;
+	padding-left: ;
+	position: relative;
+	left: 0.7em;
+	overflow: auto;
+    margin-left: 100px;
+    margin-top: 20px;
+   border: 1px solid black;
+    border-radius: 10px;
+    
+    
+   
+}
+
+#sub{
+    display: block;
+}
+
