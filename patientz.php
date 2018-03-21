@@ -43,7 +43,7 @@ $row = mysqli_fetch_assoc($result);*/
 <body>
 	<?php
 	$did = $_SESSION["doc_id"];
-	echo "<script type='text/javascript'>alert('$did');</script>";
+	//echo "<script type='text/javascript'>alert('$did');</script>";
 	?>
      <div class="container-fluid header">
             <div class="row">
@@ -95,8 +95,8 @@ $row = mysqli_fetch_assoc($result);*/
                 
                 <table class=" table table-bordered " id="patienttable">
                     <thead>
-                    <th class="tie text-center">Patients ID</th>
-                    <th class="tie text-center">Name</th>
+                    
+                    <th class="tie text-center">Patient ID</th>
                     <th class="tie text-center">Gender</th>
                     <th class="tie text-center">Patient Type</th>
                     <th class="tie text-center">Actions</th>
@@ -120,8 +120,8 @@ $row = mysqli_fetch_assoc($result);*/
                                // echo "<td class=' desc text-center'>$row[4]-patient</td>";
                                 
                                 echo "<td class='desc text-center'>";
-                                echo "<a href='updatepatient.php?pid=".$row[0]."'> <button class='btn btn-default neutral' id='butt'> Update </button></a> ";
-                                echo "<a href='viewpatients.php?pid=".$row[0]."'><button class='btn btn-default success' id='view'> <p x class='glyphicon glyphicon-eye-open' style='font-family:Champagne-&-Limousines;'></p> &nbsp&nbsp&nbsp View </button></a> ";
+                                echo "<a href='updatepatient.php?pid=".$row[0]."'> <button class='btn btn-success neutral' id='butt'> ADD </button></a> ";
+                                echo "<a href='viewpatients.php?pid=".$row[0]."'><button class='btn btn-default success' id='view'> <p class='glyphicon glyphicon-eye-open' style='font-family:Champagne-&-Limousines;'></p> &nbsp&nbsp&nbsp View </button></a> ";
                                 echo "</td>";
                                 echo "</tr>";
 
@@ -193,7 +193,8 @@ function goBack() {
     $(document).ready(function(){
 
       $("#patienttable").DataTable({
-       "pagingType": "full_numbers"
+       "pagingType": "full_numbers",
+          
       });
         
         

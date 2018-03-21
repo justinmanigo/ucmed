@@ -68,9 +68,15 @@
             <div class="col-md-10 content" id="content">
              
                 
-             
+                <?php 
                 
-              <form method="POST" action="savenewpatient.php" id="formSample">
+                echo "<div>
+                 <h2 class='col-md-offset-3' id='name'>Hello Doctor</h2>
+                </div>";
+                
+                ?>
+                
+              <form method="POST" action="newSave.php" id="formSample">
               <div class="col-md-offset-0 box1">                
                      <span class="glyphicon glyphicon-user"></span><span class="aplabel">First Name</span><input name="fname" id="fname" type="text" class="apdesc"  required style="margin-left:40px" autocomplete="off"/>
                      <br><br>
@@ -132,30 +138,11 @@
                       
                         
                 
-                      <span class=" fa fa-credit-card"></span><span class="aplabel">Disease Name</span>
-                      <select required name="disname" id="disname" style="margin-left:25px" >
-                      <option value="-1">-choose-</option>
-                     
-                      <?php
-
-                        $querydisease = "SELECT disease_id, disease_name FROM diseases";
-                        $resultdis = mysqli_query($conn,$querydisease);
-
-                        if($resultdis){
-                          while($dis = mysqli_fetch_row($resultdis)){
-
-                            echo "<option  value='".$dis[0]."'>".$dis[1]." idnum = ".$dis[0]."</option>";
-                            
-                            
-                          }
-                        }
-                       
-                          echo "</select>";
-                      ?>
+                      <span class=" fa fa-credit-card"></span><span class="aplabel">Disease Name</span><input name="dName" type="text" class="apdesc" style="margin-left:45px"/>
                          <br><br>
                      <span class=" fa fa-bed"></span><span class="aplabel">Disease Status</span><input name="dDesc" type="text" class="apdesc"  style="margin-left:35px;"/>
                      <br><br>
-                      <span class=" fa fa-bed"></span><span class="aplabel">Treatment</span><input name="diagTreat" type="text" class="apdesc" style="margin-left:45px;"/>
+                      <span class=" fa fa-bed"></span><span class="aplabel">Treatment</span><input name="dTreat" type="text" class="apdesc" style="margin-left:45px;"/>
                        
               
                  
@@ -167,7 +154,7 @@
                   <div class="col-md-6 in">
                       
                         <span class="fa fa-calendar"></span><span class = "aplabel">Admission Date</span>
-                  <input name="admissDate"  id="admissDate" type="date"  class="apdesc" style="margin-left:15px" autocomplete="off"/>
+                  <input name="adDate"  id="adDate" type="date"  class="apdesc" style="margin-left:15px" autocomplete="off"/>
                <br><br>
                 <span class=" fa fa-bed"></span><span class="aplabel">Room Type</span>
 					 
@@ -182,7 +169,7 @@
                               <br><br>
 
                      
-                      <span class=" fa fa-credit-card"></span><span class="aplabel">Paid Amount</span><input  id="pMount" value=0 name="iPMount" type="text" class="apdesc" style="margin-left:45px"/>
+                      <span class=" fa fa-credit-card"></span><span class="aplabel">Paid Amount</span><input  id="pMount" value=0 name="inPaidAmount" type="text" class="apdesc" style="margin-left:45px"/>
                          <br><br>
 						 
                      <span class=" fa fa-bed"></span><span class="aplabel">Room number</span>
@@ -244,22 +231,21 @@
                      <br><br>
                       
                        <span class="fa fa-calendar"></span><span class = "aplabel">Discharge Date</span>
-                  <input name="disDate"  id="disDate" type="date"  class="apdesc" style="margin-left:15px" autocomplete="off" oninput="days_between()"/>
+                  <input name="disDate"  id="disDate" type="date"  class="apdesc" style="margin-left:15px" autocomplete="off"/>
                        <br><br>
                        <span class="fa fa-hospital-o"></span><span class="aplabel"> Admission Results </span><input name="adResults" type="text" class="apdesc" style="margin-left:30px;width:300px;" />
                  
                  
               </div>
-                       
                   
-                  <!--box out-->  
+                  <!--box 1 test -->  
                   
                   <div class="col-md-6 out">
                       
                     <span class="fa fa-calendar"></span><span class = "aplabel">Consultation Date</span>
-                    <input name="consDate"  id="consDate" type="date"  class="apdesc" style="margin-left:0px" autocomplete="off"/>
+                    <input name="cDate"  id="contact" type="date"  class="apdesc" style="margin-left:0px" autocomplete="off"/>
                  <br><br>
-                       <span class=" fa fa-credit-card"></span><span class="aplabel">Paid Amount</span><input id ="outPaid" name="oPMount" type="text" class="apdesc" placeholder="Specify" style="margin-left:35px"/>
+                       <span class=" fa fa-credit-card"></span><span class="aplabel">Paid Amount</span><input id ="outPaid" name="outPaidAmount" type="text" class="apdesc" placeholder="Specify" style="margin-left:35px"/>
                      <br><br>
                       
                       
@@ -273,38 +259,18 @@
                   
                    <!--box test-->
                
-                   <div class="col-md-3 test">
+                   <div class="col-md-6 box2">
                
-                  
-                    <span class=" fa fa-hospital-o"></span><span class="aplabel">Test Name</span>
-                      <select required name="tName" id="tName" style="margin-left:25px" >
-                      <option value="0">-choose-</option>
-                     
-                      <?php
-
-                        $querytest = "SELECT * FROM tests";
-                        $resulttest = mysqli_query($conn,$querytest);
-
-                        if($resulttest){
-                          while($tst = mysqli_fetch_row($resulttest)){
-
-                            echo "<option  value='".$tst[0]."'>".$tst[1]." idnum = ".$tst[0]."</option>";
-                            
-                            
-                          }
-                        }
-                     
-                          echo "</select>";
-                      ?>
+                    <span class="fa fa-hospital-o"></span><span class="aplabel">Test Name</span><input name="tName" type="text" class="apdesc" style="margin-left:45px" />
                      <br><br>
                      <span class=" fa fa-bed"></span><span class="aplabel">Test Result</span><input name="tResult" type="text" class="apdesc"  style="margin-left:35px"/>
                      <br><br>
                       <span class=" fa fa-calendar"></span><span class="aplabel">Test Date</span><input name="tDate" type="date" class="apdesc" style="margin-left:45px"/>
-                       </select>
+                 
               </div>
                   
                   
-                       
+              
                  
                   
                   <!--box out-->
@@ -318,10 +284,10 @@
                </div>
               
                 
-                  </div>
+              
                 </form>     
 
-            </div> <!--form div-->
+            </div>
         </div>
 
  <div id="myModal" class="modal col-md-5 col-md-offset-4">
@@ -352,7 +318,7 @@
      $(".in").hide();
      $(".out").hide();
          $(".disease").hide();
-         $(".test").hide();
+         $(".box2").hide();
          $("#submit").hide();
          
     
@@ -360,22 +326,16 @@
          
          $('#patientType').on('change', function() {
              var value = $(this).val();
-         $(".in").hide();
-     $(".out").hide();
-         $(".disease").hide();
-         $(".test").hide();
-         $("#submit").hide();
+       
             if(value== "in"){
                 $(".in").show(1000);
                 $(".disease").show(1000);
                 $(".out").hide();
-                $(".test").show(1000);
                 $("#submit").show();
             }else if(value == "out"){
-                $(".out").show(1000);
-                $(".disease").show(1000);
+                $(".out").show();
+                $(".disease").show();
                 $(".in").hide();
-                $(".test").show(1000);
                 $("#submit").show();
                 document.getElementById("outPaid").value = 500;
                 
@@ -384,7 +344,6 @@
               $(".out").hide(); 
                 $(".disease").hide();
                 $("#submit").hide();
-                $(".test").hide();
             }
         });
          
@@ -458,33 +417,6 @@ function verify()
     
     
 }
-function days_between() {
-
-    var dat1 = document.getElementById('admissDate').value;
-                var date1 = new Date(dat1)//converts string to date object
-               
-                var dat2 = document.getElementById('disDate').value;
-                var date2 = new Date(dat2)
-                
-                var x = document.getElementById('disDate').value;
-                console.log(x); 
-
-                var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-                var diffDays = Math.abs((date1.getTime() - date2.getTime()) / (oneDay));
-               
-                console.log(diffDays);
-                document.getElementById("pMount").value *= diffDays;
-                /*var finprice = document.getElementById("pMount").value;
-                console.log(finprice);
-                var pricexvalue = document.getElementById("pMount").value * 2;
-                console.log(pricexvalue);
-                pricexvalue = parseInt(pricexvalue);
-                finprice = parseInt(finprice);
-                finprice += pricexvalue;
-                document.getElementById("pMount").value = finprice;
-                console.log(finprice);*/
-
-}
 
 function checkRoomType(type)
 {
@@ -509,7 +441,7 @@ function checkRoomType(type)
   $('.oppri').hide()
 
   <?php
-  $hey = "Ward";  
+  $hey = "Ward";
   $queryroom = "SELECT * FROM rooms WHERE room_type = '$hey' && occupants < 8";
   $resultroom = mysqli_query($conn,$queryroom);
   while($row = mysqli_fetch_assoc($resultroom)){
@@ -536,15 +468,15 @@ function checkRoomType(type)
   $('.oppri').hide()
 
   <?php
-  $hey = "semi private";
+  $hey = "Semi-Private";
   $queryroom = "SELECT * FROM rooms WHERE room_type = '$hey' && occupants < 4";
   $resultroom = mysqli_query($conn,$queryroom);
   while($row = mysqli_fetch_assoc($resultroom)){
 
     echo "
 
-    
     $('#opsemi'+".$row['room_number'].").show()
+
     ";
     
 

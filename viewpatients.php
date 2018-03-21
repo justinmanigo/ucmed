@@ -107,7 +107,7 @@
              
               </div>  
                 <!--dataset-->
-                 <div class="col-md-6  col-md-offset-4 prebox " style="margin-top:30px;text-align: center;">
+                 <div class="col-md-6  col-md-offset-5 prebox " style="margin-top:30px;text-align: center;">
                             MEDICAL RECORDS
                 
                 <table class=" table table-bordered" id="record" style="border-radius:5em;">
@@ -119,20 +119,8 @@
                       <?php 
                         
                     
-    /*                      SELECT p.patient_Fname,  d.diagnose_date,ds.disease_name, d.patient_type
-FROM diagnosis d
-JOIN patients p ON d.patient_id= p.patient_id
-JOIN diseases ds ON d.disease_id=ds.disease_id
-WHERE d.patient_id=1*/
                           
-                          
-  /*          SELECT   d.diagnose_date,ds.disease_name, d.patient_type
-                        FROM diagnosis d   JOIN patients p ON d.patient_id= p.patient_id
-                        JOIN diseases ds ON d.disease_id=ds.disease_id
-                        WHERE d.patient_id=".$_GET['pid']
-                          */
-                          
-            $viewpatient = "SELECT diagnosis.diagnose_date,disease_name,patient_type
+            $viewpatient = "SELECT diagnosis.diagnose_date,disease_name,patient_type,diagnosis.diagnosis_id
                         FROM diagnosis 
                         JOIN patients  ON diagnosis.patient_id= patients.patient_id
                         JOIN diseases  ON diagnosis.disease_id=diseases.disease_id
@@ -146,16 +134,42 @@ WHERE d.patient_id=1*/
                                 echo "<tr>";
                                echo "<td class=' desc text-center'>".$pre[0]."</td>";
                                 echo "<td class=' desc text-center'>".$pre[1]."</td>";
-                                echo "<td class=' desc text-center'>".$pre[2]."</td>";
+                    echo "<td class=' desc text-center'>".$pre[2]."</td>";
                                 
-                                echo "<td class=' desc text-center'>";
-                                echo "<a href='viewpatientz.php?pid=".$pre[0]."&mom=".$_GET['pid']."'><button id='buttonadd' class='btn btn-default neutral action'> View</button></a>";
+                      echo "<td class=' desc text-center'>";
+                                
+                      echo "<a href='updatespecifipatient.php?diagid=".$pre[3]."'><button id='buttonadd' class='btn btn-default neutral action'>edit</button></a>";          
+                      echo "<a href='viewspecpatient.php?diagid=".$pre[3]."'><button id='buttonadd' class='btn btn-default neutral 
+                      action'> View</button></a>";
+                        
+                        echo    "<form method = 'POST' action = 'viewpatients.php'> <button id='buttondelete' class='btn btn-default neutral action' type = 'submit'> Del</button></form>";  
                                 echo "</td>";
                                 echo "</tr>";
                                 
 
                             }
                         }
+                        
+                          
+                          if(isset($_POST['buttondelete'])){
+                              
+                              $querydelete= "ALTER TABLE diagnosis
+   DROP CONSTRAINT disease_diagnosis ALTER TABLE diagnosis
+   ADD CONSTRAINT FK_T1_T2_Cascade
+   FOREIGN KEY (EmployeeID) REFERENCES dbo.T1(EmployeeID) ON DELETE CASCADE";
+                              
+                              $del= mysqli_query($conn,$querydelete);
+                              
+                              $querydelete= "DELETE * FROM diagnosis WHERE diagnosis_id = ".$pre[3];
+                              
+                              $del= mysqli_query($conn,$querydelete);
+                              
+                              echo $querydelete;
+                              
+                              header("patientz.php");
+                              
+                           }
+                        
                           
                           
                     ?>
@@ -232,9 +246,8 @@ $(document).ready(function(){
     
     
     $("#record").DataTable({
-       "pagingType": "full_numbers",
-        "pageLength":2,
-        "searching": true
+         "pagingType": "full_numbers",
+        
       });
          
       
