@@ -56,6 +56,8 @@
                          <div class="navheight"><span>&nbsp&nbsp</span><p class="glyphicon glyphicon-folder-open centertext"></p> &nbsp CHARTS</div></a>
                         <a href="patientz.php" id="link"><div class="navheight"> <span>&nbsp</span> <p class="glyphicon glyphicon-list-alt centertext"></p>&nbsp PATIENTS </div></a>
                        <a href="#"  id="link"><div class="active navheight"> <span>&nbsp</span> <p class="glyphicon glyphicon-user centertext"></p>&nbsp NEW PATIENTS</div></a>
+                        <a href="discharge.php" id="link">
+                         <div class="navheight"><span>&nbsp&nbsp</span><p class="glyphicon glyphicon-export centertext"></p> &nbsp DISCHARGE</div></a>
                          <a id="myBtn1" id="link"  ><div class=" navheight"> <span>&nbsp</span> <p class="glyphicon glyphicon-log-out centertext"></p>&nbsp LOG OUT</div></a>
                         
                         
@@ -68,21 +70,15 @@
             <div class="col-md-10 content" id="content">
              
                 
-                <?php 
+             
                 
-                echo "<div>
-                 <h2 class='col-md-offset-3' id='name'>Hello Doctor</h2>
-                </div>";
-                
-                ?>
-                
-              <form method="POST" action="newSave.php" id="formSample">
+              <form method="POST" action="savenewpatient.php" id="formSample">
               <div class="col-md-offset-0 box1">                
                      <span class="glyphicon glyphicon-user"></span><span class="aplabel">First Name</span><input name="fname" id="fname" type="text" class="apdesc"  required style="margin-left:40px" autocomplete="off"/>
                      <br><br>
                      <span class="glyphicon glyphicon-user"></span><span class="aplabel">Last Name</span><input  name="lname"  id="lname" type="text"  required class="apdesc" style="margin-left:40px" autocomplete="off"/>
                      <br><br>
-					 <span class="glyphicon glyphicon-user"></span><span class="aplabel">Contact</span><input name="contact"  id="contact" type="text"  class="apdesc" style="margin-left:60px" autocomplete="off"/>
+           <span class="glyphicon glyphicon-user"></span><span class="aplabel">Contact</span><input name="contact"  id="contact" type="text"  class="apdesc" style="margin-left:60px" autocomplete="off"/>
                      <br><br>
                      <span class="fa fa-birthday-cake"></span><span class = "aplabel">Date of Birth</span>
                   <input name="bday"  id="bday" type="date"  class="apdesc" required  style="margin-left:25px" autocomplete="off"/>
@@ -93,33 +89,33 @@
 
                     <span class="fa fa-home"></span><span class="aplabel">Address</span><input id="adress" name="address" type="text" class="apdesc" style="margin-left:57.5px" autocomplete="off"/>
                     <br><br>
-					
-					<span class="fa fa-user-circle"></span><span class="aplabel">Gender</span>
+          
+          <span class="fa fa-user-circle"></span><span class="aplabel">Gender</span>
                   <select name="gender" id="dob-day" required style="margin-left:50px" >
                               <option value="-1">-choose-</option>
-							  <option value="male">Male</option>
-							  <option value="female">Female</option>
-							  <option value="others">Others</option>
-							  </select>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="others">Others</option>
+                </select>
                     <br><br>
-					
-					<span class="fa fa-heartbeat"></span><span class = "aplabel">Civil Status</span>
+          
+          <span class="fa fa-heartbeat"></span><span class = "aplabel">Civil Status</span>
                           
                             <select required name="civilStatus" id="civilStatus" style="margin-left:25px" >
                               <option value="-1">-choose-</option>
-							  <option value="single">Single</option>
-							  <option value="married">Married</option>
-							  <option value="widowed">Widowed</option>
-							  </select>
-                    <br><br>	
+                <option value="single">Single</option>
+                <option value="married">Married</option>
+                <option value="widowed">Widowed</option>
+                </select>
+                    <br><br>  
                     
                     <span class="fa fa-file-powerpoint-o"></span><span class = "aplabel">PatientType</span>
                           
                             <select required name="patientType" id="patientType" style="margin-left:25px" >
                               <option value="-1">-choose-</option>
-							  <option  value="in">In Patient</option>
-							  <option  value="out">Out Patient</option>
-							  </select>
+                <option  value="in">In Patient</option>
+                <option  value="out">Out Patient</option>
+                </select>
                     <br><br>
                    
                   
@@ -138,15 +134,37 @@
                       
                         
                 
-                      <span class=" fa fa-credit-card"></span><span class="aplabel">Disease Name</span><input name="dName" type="text" class="apdesc" style="margin-left:45px"/>
-                         <br><br>
-                     <span class=" fa fa-bed"></span><span class="aplabel">Disease Status</span><input name="dDesc" type="text" class="apdesc"  style="margin-left:35px;"/>
-                     <br><br>
-                      <span class=" fa fa-bed"></span><span class="aplabel">Treatment</span><input name="dTreat" type="text" class="apdesc" style="margin-left:45px;"/>
+                      <span class=" fa fa-credit-card"></span><span class="aplabel">Disease Name</span>
+                      <select required name="disname" id="disname" style="margin-left:25px" >
+                      <option value="-1">-choose-</option>
+                     
+                      <?php
+
+                        $querydisease = "SELECT disease_id, disease_name FROM diseases";
+                        $resultdis = mysqli_query($conn,$querydisease);
+
+                        if($resultdis){
+                          while($dis = mysqli_fetch_row($resultdis)){
+
+                            echo "<option  value='".$dis[0]."'>".$dis[1]." idnum = ".$dis[0]."</option>";
+                            
+                            
+                          }
+                        }
                        
-              
+                          echo "</select>";
+                      ?>
+                         <br><br>
+                    
+                      <span class=" fa fa-bed"></span><span class="aplabel">Treatment</span><input name="diagTreat" type="text" class="apdesc" style="margin-left:45px;"/>
+                         <br><br>
+                    
                  
-                 
+                       </select>
+                     
+                       <div class="col-md-offset-4">
+                       <button class="btn btn-default" id="addbot"> New Disease</button>
+                           </div>
               </div>
                     
                    <!--box 1 in -->  
@@ -154,24 +172,24 @@
                   <div class="col-md-6 in">
                       
                         <span class="fa fa-calendar"></span><span class = "aplabel">Admission Date</span>
-                  <input name="adDate"  id="adDate" type="date"  class="apdesc" style="margin-left:15px" autocomplete="off"/>
+                  <input name="admissDate"  id="admissDate" type="date"  class="apdesc" style="margin-left:15px" autocomplete="off"/>
                <br><br>
                 <span class=" fa fa-bed"></span><span class="aplabel">Room Type</span>
-					 
+           
          
             <select id='crType' name="rType" style="margin-left:35px" onchange="checkRoomType(this.value)">
-							<option value="-1"></option>
-							<option value="Ward">Ward</option>
-							<option value="Semi-Private">Semi-Private</option>
-							<option value="Private">Private</option>
-					  </select>
+              <option value="-1"></option>
+              <option value="Ward">Ward</option>
+              <option value="Semi-Private">Semi-Private</option>
+              <option value="Private">Private</option>
+            </select>
 
                               <br><br>
 
                      
-                      <span class=" fa fa-credit-card"></span><span class="aplabel">Paid Amount</span><input  id="pMount" value=0 name="inPaidAmount" type="text" class="apdesc" style="margin-left:45px"/>
+                      <span class=" fa fa-credit-card"></span><span class="aplabel">Paid Amount</span><input  id="pMount" value=0 name="iPMount" type="text" class="apdesc" style="margin-left:45px"/>
                          <br><br>
-						 
+             
                      <span class=" fa fa-bed"></span><span class="aplabel">Room number</span>
                      <select id='chrt' name="rNumber" style="margin-left:35px">
                         <option  value="-1"></option>
@@ -231,21 +249,22 @@
                      <br><br>
                       
                        <span class="fa fa-calendar"></span><span class = "aplabel">Discharge Date</span>
-                  <input name="disDate"  id="disDate" type="date"  class="apdesc" style="margin-left:15px" autocomplete="off"/>
+                  <input name="disDate"  id="disDate" type="date"  class="apdesc" style="margin-left:15px" autocomplete="off" oninput="days_between()"/>
                        <br><br>
                        <span class="fa fa-hospital-o"></span><span class="aplabel"> Admission Results </span><input name="adResults" type="text" class="apdesc" style="margin-left:30px;width:300px;" />
                  
                  
               </div>
+                       
                   
-                  <!--box 1 test -->  
+                  <!--box out-->  
                   
                   <div class="col-md-6 out">
                       
                     <span class="fa fa-calendar"></span><span class = "aplabel">Consultation Date</span>
-                    <input name="cDate"  id="contact" type="date"  class="apdesc" style="margin-left:0px" autocomplete="off"/>
+                    <input name="consDate"  id="consDate" type="date"  class="apdesc" style="margin-left:0px" autocomplete="off"/>
                  <br><br>
-                       <span class=" fa fa-credit-card"></span><span class="aplabel">Paid Amount</span><input id ="outPaid" name="outPaidAmount" type="text" class="apdesc" placeholder="Specify" style="margin-left:35px"/>
+                       <span class=" fa fa-credit-card"></span><span class="aplabel">Paid Amount</span><input id ="outPaid" name="oPMount" type="text" class="apdesc" placeholder="Specify" style="margin-left:35px"/>
                      <br><br>
                       
                       
@@ -259,18 +278,59 @@
                   
                    <!--box test-->
                
-                   <div class="col-md-6 box2">
+                   <div class="col-md-4  test">
                
-                    <span class="fa fa-hospital-o"></span><span class="aplabel">Test Name</span><input name="tName" type="text" class="apdesc" style="margin-left:45px" />
+                  
+                    <span class=" fa fa-hospital-o"></span><span class="aplabel">Test Name</span>
+                      <select required name="tName" id="tName" style="margin-left:25px" >
+                      <option value="0">-choose-</option>
+                     
+                      <?php
+
+                        $querytest = "SELECT * FROM tests";
+                        $resulttest = mysqli_query($conn,$querytest);
+
+                        if($resulttest){
+                          while($tst = mysqli_fetch_row($resulttest)){
+
+                            echo "<option  value='".$tst[0]."'>".$tst[1]." idnum = ".$tst[0]."</option>";
+                            
+                            
+                          }
+                        }
+                     
+                          echo "</select>";
+                      ?>
                      <br><br>
                      <span class=" fa fa-bed"></span><span class="aplabel">Test Result</span><input name="tResult" type="text" class="apdesc"  style="margin-left:35px"/>
                      <br><br>
                       <span class=" fa fa-calendar"></span><span class="aplabel">Test Date</span><input name="tDate" type="date" class="apdesc" style="margin-left:45px"/>
-                 
+                       </select>
               </div>
                   
-                  
-              
+                  <!--new disease box-->
+                      <div class="col-md-6 newdis">
+                      
+                        
+                
+                      <span class=" fa fa-credit-card"></span><span class="aplabel">New Disease Name</span>
+                      <input name="diagTreat" type="text" class="apdesc" style="margin-left:45px;"/>
+                     
+                        
+                    
+                         <br><br>
+                    
+                      <span class=" fa fa-bed"></span><span class="aplabel">Descreption</span><input name="diagTreat" type="text" class="apdesc" style="margin-left:45px;"/>
+                         <br><br>
+                    
+                 
+                    
+                     
+                       <div class="col-md-offset-4">
+                       <button class="btn btn-default" id="addsub"> ADD</button>
+                           </div>
+              </div>
+                       
                  
                   
                   <!--box out-->
@@ -284,28 +344,28 @@
                </div>
               
                 
-              
+                  
                 </form>     
 
-            </div>
+            </div> <!--form div-->
         </div>
-
+    
  <div id="myModal" class="modal col-md-5 col-md-offset-4">
 
   <!-- Modal content -->
   <div class="modal-content">
 <span class="close">&times;</span>
     
-	<h1 class="text-center">Are you sure you want to logout?</h1>
+  <h1 class="text-center">Are you sure you want to logout?</h1>
     <a id="login"  href="#" class="btn btn-danger btn-lg " style="margin-left:35%;margin-right:5%;">
           <span class="glyphicon glyphicon-log-in"></span> NO
         </a>
     <a id="logout" href="logout.php" class="btn btn-success btn-lg ">
           <span class="glyphicon glyphicon-log-out"></span> YES
         </a>
-	
+  
   </div>
-	
+  
   </div>   
 </body>
 </html>
@@ -318,24 +378,30 @@
      $(".in").hide();
      $(".out").hide();
          $(".disease").hide();
-         $(".box2").hide();
+         $(".test").hide();
          $("#submit").hide();
-         
+         $(".newdis").hide();
     
        
          
          $('#patientType').on('change', function() {
              var value = $(this).val();
-       
+         $(".in").hide();
+     $(".out").hide();
+         $(".disease").hide();
+         $(".test").hide();
+         $("#submit").hide();
             if(value== "in"){
                 $(".in").show(1000);
                 $(".disease").show(1000);
                 $(".out").hide();
+                $(".test").show(1000);
                 $("#submit").show();
             }else if(value == "out"){
-                $(".out").show();
-                $(".disease").show();
+                $(".out").show(1000);
+                $(".disease").show(1000);
                 $(".in").hide();
+                $(".test").show(1000);
                 $("#submit").show();
                 document.getElementById("outPaid").value = 500;
                 
@@ -344,17 +410,23 @@
               $(".out").hide(); 
                 $(".disease").hide();
                 $("#submit").hide();
+                $(".test").hide();
             }
         });
          
          
          
-          $("#login").click(function(){  
+         
+         
+          $("#addbot").click(function(){  
            
-         $(".modal").hide();
+         $(".newdis").show(1000);
          
-     });
+          }
+                            
+    ); 
          
+      
       
     
     });
@@ -417,31 +489,58 @@ function verify()
     
     
 }
+function days_between() {
+
+    var dat1 = document.getElementById('admissDate').value;
+                var date1 = new Date(dat1)//converts string to date object
+               
+                var dat2 = document.getElementById('disDate').value;
+                var date2 = new Date(dat2)
+                
+                var x = document.getElementById('disDate').value;
+                console.log(x); 
+
+                var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                var diffDays = Math.abs((date1.getTime() - date2.getTime()) / (oneDay));
+               
+                console.log(diffDays);
+                document.getElementById("pMount").value *= diffDays;
+                /*var finprice = document.getElementById("pMount").value;
+                console.log(finprice);
+                var pricexvalue = document.getElementById("pMount").value * 2;
+                console.log(pricexvalue);
+                pricexvalue = parseInt(pricexvalue);
+                finprice = parseInt(finprice);
+                finprice += pricexvalue;
+                document.getElementById("pMount").value = finprice;
+                console.log(finprice);*/
+
+}
 
 function checkRoomType(type)
 {
-	
+  
   document.getElementById("chrt").value =-1;
-	if(type==-1){
-	
-	document.getElementById("pMount").value =0;
+  if(type==-1){
+  
+  document.getElementById("pMount").value =0;
 
-	<?php
+  <?php
   echo"
   $('.opward').hide()
   $('.opsemi').hide()
   $('.oppri').hide()
   ";
   ?>
-	}else if(type=="Ward"){
-	
-	document.getElementById("pMount").value =20;
+  }else if(type=="Ward"){
+  
+  document.getElementById("pMount").value =20;
   console.log(document.getElementById("pMount").value);
   $('.opsemi').hide()
   $('.oppri').hide()
 
   <?php
-  $hey = "Ward";
+  $hey = "Ward";  
   $queryroom = "SELECT * FROM rooms WHERE room_type = '$hey' && occupants < 8";
   $resultroom = mysqli_query($conn,$queryroom);
   while($row = mysqli_fetch_assoc($resultroom)){
@@ -457,26 +556,26 @@ function checkRoomType(type)
   
   ?>
   
-	}else if(type=="Semi-Private"){
+  }else if(type=="Semi-Private"){
   
 
 
-	
-	document.getElementById("pMount").value =30;
+  
+  document.getElementById("pMount").value =30;
   console.log(document.getElementById("pMount").value);
   $('.opward').hide()
   $('.oppri').hide()
 
   <?php
-  $hey = "Semi-Private";
+  $hey = "semi private";
   $queryroom = "SELECT * FROM rooms WHERE room_type = '$hey' && occupants < 4";
   $resultroom = mysqli_query($conn,$queryroom);
   while($row = mysqli_fetch_assoc($resultroom)){
 
     echo "
 
+    
     $('#opsemi'+".$row['room_number'].").show()
-
     ";
     
 
@@ -484,9 +583,9 @@ function checkRoomType(type)
   
   ?>
   
-	}else if(type=="Private"){
-	 
-	document.getElementById("pMount").value =40;
+  }else if(type=="Private"){
+   
+  document.getElementById("pMount").value =40;
   console.log(document.getElementById("pMount").value);
   $('.opsemi').hide()
   $('.opward').hide()
@@ -508,7 +607,7 @@ function checkRoomType(type)
   
   ?>
 
-	}
+  }
 
 
 }

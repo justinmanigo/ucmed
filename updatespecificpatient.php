@@ -10,6 +10,7 @@
    $querypatient = "SELECT ds.disease_name,ds.disease_desc, d.patient_type,d.diagnose_date,d.paid_amount,r.room_type,r.room_number,ip.discharge_date,ip.result,op.consultation_result,d.treatment 
     FROM diagnosis d
     JOIN patients p ON p.patient_id=d.patient_id
+    
     JOIN diseases ds ON d.disease_id=ds.disease_id
     LEFT JOIN out_patients op ON op.diagnosis_id=d.diagnosis_id
     LEFT JOIN in_patients ip ON ip.diagnosis_id=d.diagnosis_id
@@ -101,32 +102,49 @@
             
 
         
-            <div class="col-md-10 content" id="content">
+            <div class="col-md-10 content1" id="content1">
             
        
-                     
+                  <form method="post" action="saveupdatemidrec.php">   
          <div class="col-md-1 dis1">                
-                     <span class="glyphicon glyphicon-user"></span><span class="aplabel">Disease Name:</span>
-                   <b> <span style="margin-left:30px;font-size:15px;"> 
-                   <?php echo $res1;?>
-                       </span></b>
+                      <span class=" fa fa-credit-card"></span><span class="aplabel">Disease Name</span>
+                      <select required name="disname" id="disname" style="margin-left:25px" >
+                      <option value="-1">-choose-</option>
+                     
+                      <?php
+
+                        $querydisease = "SELECT disease_id, disease_name FROM diseases";
+                        $resultdis = mysqli_query($conn,$querydisease);
+
+                        if($resultdis){
+
+                          while($dis = mysqli_fetch_row($resultdis)){
+
+                            echo "<option  value='".$dis[0]."'>".$dis[1]." idnum = ".$dis[0]."</option>";
+                            
+                            
+                          }
+                        }
+                       
+                          echo "</select>";
+                      ?>
+                   
              
                 <br> <br>   
                       <span class="glyphicon glyphicon-user"></span><span class="aplabel"> Disease Desc: </span>
-                   <b> <span style="margin-left:30px;font-size:15px;"> 
-                   <?php echo $res2;?>
-    
-                       
-                       </span></b>
+                    <input value="<?php echo $res2; ?>" name="ddesc"  type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/>
+                    <input type="hidden" name="diaid" value= '<?php echo $_GET['diagid']?>' >
              <br> <br> 
               
              <span class="glyphicon glyphicon-user"></span><span class="aplabel">Patient Type:</span>
-                   <b> <span style="margin-left:40px;font-size:15px;">  <?php echo $res3;?></span></b>
+                   <b>  <input disabled value="<?php echo $res3; ?>"  type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/>
+                    <input type="hidden" id = "patientType" name="patientType" value= '<?php echo $res3;?>' >
              <br> <br> 
+
+
+
              <span class="fa fa-birthday-cake"></span><span class = "aplabel">Admission Date:</span><b>
-                      <span style="margin-left:20px;font-size:15px;"> 
-                          <?php echo $res4;?>
-                    </span></b>
+                      <input type = "date" value="<?php echo $res4; ?>"  name="addate" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
              
              <br> <br> 
             
@@ -136,25 +154,19 @@
            
             <div class="col-md-3 col-md-offset-4 inview">                
                      <span class="glyphicon glyphicon-user"></span><span class="aplabel"> Paid Amount:</span>
-                   <b> <span style="margin-left:50px;font-size:15px;"> 
-                      <?php echo $res5;?>
-                       </span></b>
+                   <b>  <input value="<?php echo $res5; ?>"  name="ipmount" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
              
                 <br> <br>   
                  
               <span class="fa fa-birthday-cake"></span><span class = "aplabel">Room Type:</span><b>
-                      <span style="margin-left:20px;font-size:15px;"> 
-                             <?php echo $res6;?>
-                    </span></b>
+                      <input value="<?php echo $res6; ?>" name="rtype"  type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
              
              <br> <br> 
              <span class="glyphicon glyphicon-user"></span><span class="aplabel">Room Number:</span>
-                   <b> <span style="margin-left:55px;font-size:15px;"> <?php echo $res7;?></span></b>
+                   <b> <input value="<?php echo $res7; ?>" name="rnum" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/>   </b>
              <br> <br> 
               <span class="fa fa-birthday-cake"></span><span class = "aplabel">Discharge Date:</span><b>
-                      <span style="margin-left:20px;font-size:15px;"> 
-                            <?php echo $res8;?>
-                    </span></b>
+                      <input type = "date" value="<?php echo $res8; ?>"  name="disdate" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
              
              <br> <br> 
              
@@ -164,46 +176,36 @@
                 <div class="col-md-3 col-md-offset-4 outview">                
                      
                       <span class="glyphicon glyphicon-user"></span><span class="aplabel"> Paid Amount:</span>
-                   <b> <span style="margin-left:50px;font-size:15px;"> 
-                   
-                     <?php echo $res5;?>
+                   <b> <input value="<?php echo $res9; ?>" name="opmount" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/>
     
                        
-                       </span></b>
+                      </b>
              <br> <br> 
               <span class="fa fa-birthday-cake"></span><span class = "aplabel">Consultation Date:</span><b>
-                      <span style="margin-left:20px;font-size:15px;"> 
-                            <?php echo $res4;?>
-                    </span></b>
+                      <input value="<?php echo $res4; ?>" name="condate" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
              
  
             </div>
             <!--results-->
             
             
-                <div class="col-md-10 col-md-offset-1 res">                
+                <div class="col-md-6 col-md-offset-1 upres">                
                      
                       <span class="glyphicon glyphicon-user"></span><span class="aplabel"> Results:</span>
-                   <b> <span style="margin-left:50px;font-size:15px;"> 
-                   
-                     <?php echo $res10;?>
-    
-                       
-                       </span></b>
-             <br> <br> 
-                     <br> <br> 
-                     <br> <br> 
+                   <b> <input value="<?php echo $res9; ?>" name="result" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
+             <br> <br>   <br> <br> 
+                      
               <span class="fa fa-birthday-cake"></span><span class = "aplabel">Treatment:</span><b>
-                      <span style="margin-left:20px;font-size:15px;"> 
-                        <?php echo $res11;?>
-                    </span></b>
+                      <input value="<?php echo $res11; ?>"   name="treat" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
              
  
             </div>
 
+                 <div class="col-md-5 sub" >
+                <button class = "btn btn-primary" id="submit"   name="update" style="margin-top:100%;" > SUBMIT</button>
+               </div>
             
-            
-            
+                </form>
             
             
             
@@ -264,7 +266,15 @@ $(document).ready(function(){
      
       
     
-    
+    if(document.getElementById("patientType").value=="in"){
+
+      $(".inview").hide();
+
+    }else{
+
+      $(".outview").hide();
+    }
+
     $("#record").DataTable({
        "pagingType": "full_numbers",
         "pageLength":2,

@@ -129,6 +129,7 @@ html, body {
 	padding-bottom: 1em;
 	margin-left: 0.12em;
 	width:16em;
+    height: 6em;
 	color: white;
 }
 
@@ -262,6 +263,11 @@ html, body {
 
 }
 
+.btn.dis{
+	background-color:#f22626;
+	height: 30px;
+
+}
 .glyphicon-eye-open:before {
   margin-right: -8px;
 }

@@ -1,7 +1,7 @@
  <?php
                                 
                                
-              require("connect.php");
+        require("connect.php");
         session_start();
                                 
                 
@@ -12,16 +12,16 @@
                     
 
                        
-    $insertdis="INSERT INTO diseases VALUES(NULL,'".$_POST['newDisname']."','".$_POST['newDisdes']."')";
-    $resultz = mysqli_query($conn,$insertdis);   
+    $inserttest="INSERT INTO tests VALUES(NULL,'".$_POST['newTestName']."','".$_POST['newTestDesc']."')";
+    $resultz = mysqli_query($conn,$inserttest);   
                               
                                 
                                 
           if($resultz){
               
-              $message = "New Disease Successfully Added";
+             $message = "New Test Successfully Added";
              echo "<script type='text/javascript'>alert('".$message."')
-             window.location.href = 'index.php';</script>";
+             window.location.href = 'npatient.php';</script>";
               
           }else{
               

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2018 at 07:46 PM
+-- Generation Time: Mar 24, 2018 at 08:48 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -25,6 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cares`
+--
+
+CREATE TABLE `cares` (
+  `care_id` int(11) NOT NULL,
+  `in_id` int(11) NOT NULL,
+  `nurse_id` int(11) NOT NULL,
+  `blood_pressure` varchar(30) NOT NULL,
+  `temperature` float NOT NULL,
+  `respiratort_rate` int(30) NOT NULL,
+  `pulse_rate` varchar(30) NOT NULL,
+  `concern` varchar(300) NOT NULL,
+  `care_date` date NOT NULL,
+  `care_time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `diagnosis`
 --
 
@@ -38,6 +57,18 @@ CREATE TABLE `diagnosis` (
   `paid_amount` float NOT NULL,
   `patient_type` enum('in','out','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `diagnosis`
+--
+
+INSERT INTO `diagnosis` (`diagnosis_id`, `patient_id`, `doctor_id`, `disease_id`, `diagnose_date`, `treatment`, `paid_amount`, `patient_type`) VALUES
+(1, 2, 1, 8, '2018-03-15', 'to be observe', 450, 'in'),
+(2, 3, 1, 6, '2018-04-12', 'none', 500, 'out'),
+(3, 4, 1, 3, '2018-03-20', 'rest', 120, 'in'),
+(4, 5, 1, 11, '2018-03-21', 'drink water', 600, 'out'),
+(5, 6, 1, 10, '2018-05-23', 'none', 500, 'out'),
+(6, 7, 1, 8, '2018-02-15', 'none', 500, 'out');
 
 -- --------------------------------------------------------
 
@@ -83,6 +114,13 @@ CREATE TABLE `doctors` (
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `doctors`
+--
+
+INSERT INTO `doctors` (`doctor_id`, `doc_Fname`, `doc_Lname`, `email`, `username`, `password`) VALUES
+(1, 'Jester Ivan', 'Manigo', 'JesterIvanManigo@gmail.com', 'admin', 'admin');
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +135,25 @@ CREATE TABLE `in_patients` (
   `diagnosis_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `in_patients`
+--
+
+INSERT INTO `in_patients` (`in_id`, `result`, `discharge_date`, `room_id`, `diagnosis_id`) VALUES
+(1, 'ok', '2018-03-30', 17, 1),
+(2, 'ok', '2018-03-14', 4, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nurses`
+--
+
+CREATE TABLE `nurses` (
+  `nurse_id` int(11) NOT NULL,
+  `nurse_name` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --
@@ -108,6 +165,16 @@ CREATE TABLE `out_patients` (
   `diagnosis_id` int(11) NOT NULL,
   `consultation_result` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `out_patients`
+--
+
+INSERT INTO `out_patients` (`out_id`, `diagnosis_id`, `consultation_result`) VALUES
+(1, 2, 'fine'),
+(2, 4, 'ok'),
+(3, 5, 'ok'),
+(4, 6, 'ok');
 
 -- --------------------------------------------------------
 
@@ -126,6 +193,19 @@ CREATE TABLE `patients` (
   `civil_status` enum('married','single','widowed','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `patients`
+--
+
+INSERT INTO `patients` (`patient_id`, `patient_Fname`, `patient_Lname`, `patient_contact`, `address`, `gender`, `birthdate`, `civil_status`) VALUES
+(1, 'justin graig', 'manigo', '09559270965', 'plaridel baybay city leyte', 'male', '0000-00-00', 'single'),
+(2, 'mark', 'salazar', '0913252322', 'minglanilla cebu', 'male', '1995-03-06', 'single'),
+(3, 'jiezel', 'janohan', '092342533', 'balao leyte', 'female', '1997-03-01', 'single'),
+(4, 'joseph ', 'boleche', '09235534', 'maslug baybay leyte', 'male', '1997-03-14', 'single'),
+(5, 'mary anne', 'gegrimosa ', '09235123', 'upper malibu', 'female', '1996-03-14', 'single'),
+(6, 'aljay', 'manigo', '09231234', 'plaridel baybay leyte', 'male', '2018-03-20', 'single'),
+(7, 'rannie', 'villaver', '09231234', 'talamban cebu', 'male', '2018-03-14', 'married');
+
 -- --------------------------------------------------------
 
 --
@@ -140,6 +220,18 @@ CREATE TABLE `patients_tests` (
   `test_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `patients_tests`
+--
+
+INSERT INTO `patients_tests` (`pTest_id`, `pTest_result`, `patient_id`, `pTest_date`, `test_id`) VALUES
+(1, 'positive', 1, '2018-03-29', 2),
+(2, 'positive', 2, '2018-03-24', 1),
+(3, 'negative', 3, '2018-03-15', 2),
+(5, 'ok', 5, '2018-03-13', 6),
+(6, 'ok', 6, '2018-03-21', 2),
+(7, 'oksa', 7, '2018-03-13', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -152,6 +244,42 @@ CREATE TABLE `rooms` (
   `room_number` varchar(50) NOT NULL,
   `occupants` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rooms`
+--
+
+INSERT INTO `rooms` (`room_id`, `room_type`, `room_number`, `occupants`) VALUES
+(1, 'ward', '1', 0),
+(2, 'ward', '2', 0),
+(3, 'ward', '3', 0),
+(4, 'ward', '4', 0),
+(5, 'ward', '5', 0),
+(6, 'ward', '6', 0),
+(7, 'ward', '7', 0),
+(8, 'ward', '8', 0),
+(9, 'ward', '9', 0),
+(10, 'ward', '10', 0),
+(11, 'ward', '11', 0),
+(12, 'ward', '12', 0),
+(13, 'ward', '13', 0),
+(14, 'ward', '14', 0),
+(15, 'ward', '15', 0),
+(16, 'semi private', '16', 0),
+(17, 'semi private', '17', 0),
+(18, 'semi private', '18', 0),
+(19, 'semi private', '19', 0),
+(20, 'semi private', '20', 0),
+(21, 'semi private', '21', 0),
+(22, 'semi private', '22', 0),
+(23, 'semi private', '23', 0),
+(24, 'semi private', '24', 0),
+(25, 'semi private', '25', 0),
+(26, 'private', '26', 0),
+(27, 'private', '27', 0),
+(28, 'private', '28', 0),
+(29, 'private', '29', 0),
+(30, 'private', '30', 0);
 
 -- --------------------------------------------------------
 
@@ -185,6 +313,14 @@ INSERT INTO `tests` (`test_id`, `test_name`) VALUES
 --
 
 --
+-- Indexes for table `cares`
+--
+ALTER TABLE `cares`
+  ADD PRIMARY KEY (`care_id`),
+  ADD KEY `in_cares` (`in_id`),
+  ADD KEY `nurse_care` (`nurse_id`);
+
+--
 -- Indexes for table `diagnosis`
 --
 ALTER TABLE `diagnosis`
@@ -212,6 +348,12 @@ ALTER TABLE `in_patients`
   ADD PRIMARY KEY (`in_id`),
   ADD KEY `in_patient_diagnosis` (`diagnosis_id`),
   ADD KEY `in_patient_room` (`room_id`);
+
+--
+-- Indexes for table `nurses`
+--
+ALTER TABLE `nurses`
+  ADD PRIMARY KEY (`nurse_id`);
 
 --
 -- Indexes for table `out_patients`
@@ -251,10 +393,15 @@ ALTER TABLE `tests`
 --
 
 --
+-- AUTO_INCREMENT for table `cares`
+--
+ALTER TABLE `cares`
+  MODIFY `care_id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `diagnosis`
 --
 ALTER TABLE `diagnosis`
-  MODIFY `diagnosis_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `diagnosis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `diseases`
 --
@@ -264,32 +411,37 @@ ALTER TABLE `diseases`
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `doctor_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `doctor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `in_patients`
 --
 ALTER TABLE `in_patients`
-  MODIFY `in_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `in_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `nurses`
+--
+ALTER TABLE `nurses`
+  MODIFY `nurse_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `out_patients`
 --
 ALTER TABLE `out_patients`
-  MODIFY `out_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `out_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `patients_tests`
 --
 ALTER TABLE `patients_tests`
-  MODIFY `pTest_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pTest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `tests`
 --
@@ -298,6 +450,13 @@ ALTER TABLE `tests`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cares`
+--
+ALTER TABLE `cares`
+  ADD CONSTRAINT `in_cares` FOREIGN KEY (`in_id`) REFERENCES `in_patients` (`in_id`),
+  ADD CONSTRAINT `nurse_care` FOREIGN KEY (`nurse_id`) REFERENCES `nurses` (`nurse_id`);
 
 --
 -- Constraints for table `diagnosis`

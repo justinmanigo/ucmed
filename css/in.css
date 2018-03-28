@@ -1,15 +1,15 @@
 h2{
  background: white;
-    margin-top: 0;
+    
     height: 100px;
-    position: fixed;
-    width: 20.2%;
+    position:fixed;
+    width: 20%;
     
 }
 
 
 #logo{
-    margin-left: 40px;
+    margin-left: 40px;  
    height: 100%;
 }
 
@@ -29,6 +29,25 @@ margin-top: -2%;
 }
 
 
+.row{
+    margin-top: -65px;
+}
+
+#content{
+    margin-left: 18%;
+    background-color: #fffefe;
+     background-image: url('../img/inpatient.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 80%;
+    
+}
+
+
+
+.whole{
+    width: 100%;
+}
 
  .dropbtn {
     background-color: #4CAF50;
@@ -53,7 +72,7 @@ margin-top: -2%;
     z-index: 1;
 }
 
-.dropdown-content a {
+.dropdown-content a {   
     color: black;
     padding: 12px 16px;
     text-decoration: none;
@@ -71,37 +90,7 @@ margin-top: -2%;
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
-  
-
-#myBtn1{
-	text-decoration: none;
-	
-}
-
-#myBtn1 div{
-	padding-top: 1.5em;
-	padding-bottom: 1em;
-	margin-left: 0.12em;
-	width:15em;
-	color: white;
-}
-
-#myBtn1:hover div{
-	background-color: #808080;
-	transition: 0.5s;
-	color: white;	
-	opacity: 1.0;
-	width: -50em;
-    cursor:pointer; 
     
-
-}
-
-.modal-content{
-    margin-top: 10px;
-}
-
-   
        /*-----------------------------Side Bar-----------------------------*/
 .sidebar{
 	background: #0d0d26;
@@ -152,9 +141,8 @@ margin-top: -2%;
 }
 
 .active{
-	background-color:  #8c8c8c!important;
+	background-color:#ff4d4d!important;
 	color: white!important;
-    opacity: ;
 }
 
 #bb{
@@ -171,3 +159,35 @@ margin-top: -2%;
 	margin-top: 22px;
 }
     
+input{
+    border-radius: 10px;
+    border: 1px solid  black;
+}
+    
+#myBtn1{
+	text-decoration: none;
+	
+}
+
+#myBtn1 div{
+	padding-top: 1.5em;
+	padding-bottom: 1em;
+	margin-left: 0.12em;
+	width:15em;
+	color: white;
+}
+
+#myBtn1:hover div{
+	background-color: #808080;
+	transition: 0.5s;
+	color: white;	
+	opacity: 1.0;
+	width: -50em;
+    cursor:pointer; 
+    
+
+}
+
+.modal-content{
+    margin-top: 10px;
+}

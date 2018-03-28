@@ -7,35 +7,28 @@
     }
 
         if(isset($_GET['diagid'])){
-   $querypatient = "SELECT ds.disease_name,ds.disease_desc, d.patient_type,d.diagnose_date,d.paid_amount,r.room_type,r.room_number,ip.discharge_date,ip.result,op.consultation_result,d.treatment 
-    FROM diagnosis d
-    JOIN patients p ON p.patient_id=d.patient_id
-    
-    JOIN diseases ds ON d.disease_id=ds.disease_id
-    LEFT JOIN out_patients op ON op.diagnosis_id=d.diagnosis_id
-    LEFT JOIN in_patients ip ON ip.diagnosis_id=d.diagnosis_id
-    LEFT JOIN rooms r ON r.room_id = ip.room_id
-    WHERE d.diagnosis_id =".$_GET['diagid'];
+
+          $cid = $_GET['diagid'];
+   $querypatient = "SELECT * FROM test WHERE diagnosis=".$_GET['diagid'];
             
             $result=mysqli_query($conn,$querypatient);
-            while($row=mysqli_fetch_array($result)){
-                $res1 = $row["disease_name"];
-                $res2  = $row["disease_desc"];
-                $res3 = $row["patient_type"];
-                $res4   = $row["diagnose_date"];
-                $res5   = $row["paid_amount"];
-                $res6   = $row["room_type"];
-                $res7   = $row["room_number"];
-                $res8 = $row["discharge_date"];
-                $res9 = $row["result"];
-                $res10 = $row["consultation_result"];
-                 $res11 = $row["treatment"];
-            }
-             //echo $querypatient;
+
+           
+
+/*echo "<script type ='text/javascript'>alert('wew');</script>";*/
+              
+
+            $row=mysqli_fetch_assoc($result);
+
+            $date = strtotime($row['care_date']);
+            $dob = date("F d, Y", $date); 
             
-            
-            //$date = strtotime($row[6]);
-            //$dob = date("F d, Y", $date); 
+     /*       var_dump($row['care_time']);*/
+            $time = $row['care_time'];
+          /*  var_dump($time);*/
+
+
+            /*echo date('h:i:s a', strtotime($time));*/
         }
     
 
@@ -49,7 +42,7 @@
 <head>
     <title>Patients | Talamban Health Center</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/viewpatient.css"/>
+    <link rel="stylesheet" type="text/css" href="css/view.css"/>
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
     <link rel=icon href="img/ucmed.png" > 
     <script src="js/jquery.min.js"></script>
@@ -57,6 +50,11 @@
     <link rel="stylesheet" type="text/css"href="css/datatables.min.css"/>
    
 </head>
+    <style>
+   
+     
+    
+    </style>
 
 <body>
  
@@ -92,6 +90,10 @@
                          <div class="navheight"><span>&nbsp&nbsp</span><p class="glyphicon glyphicon-folder-open centertext"></p> &nbsp CHARTS</div></a>
                         <a href="patientz.php" id="link"><div class=" active navheight"> <span>&nbsp</span> <p class="glyphicon glyphicon-list-alt centertext"></p>&nbsp PATIENTS </div></a>
                        <a href="npatient.php"  id="link"><div class=" navheight"> <span>&nbsp</span> <p class="glyphicon glyphicon-user centertext"></p>&nbsp NEW PATIENTS</div></a>
+                        <a href="addDisease.php" id="link">
+                <div class=" navheight"><span>&nbsp&nbsp</span><p class="glyphicon glyphicon-plus-sign centertext"></p> &nbsp ADD DISEASE</div></a>
+                        <a href="discharge.php" id="link">
+                            <div class="navheight"><span>&nbsp&nbsp</span><p class="glyphicon glyphicon-export centertext"></p> &nbsp DISCHARGE</div></a>
                         <a id="myBtn1" id="link"  ><div class=" navheight"> <span>&nbsp</span> <p class="glyphicon glyphicon-log-out centertext"></p>&nbsp LOG OUT</div></a>
                         
                         
@@ -105,105 +107,120 @@
             <div class="col-md-10 content" id="content">
             
        
-                  <form method="post" action="saveupdatemidrec.php">   
+
          <div class="col-md-1 dis1">                
-                     <span class="glyphicon glyphicon-user"></span><span class="aplabel">Disease Name:</span>
-                        <input value="<?php echo $res1; ?>" name="dname " type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/>
-                   
+                     <span class="glyphicon glyphicon-user"></span><span class="aplabel">Nurse In Charge:</span>
+                   <b> <span style="margin-left:30px;font-size:15px;"> 
+                   <?php echo $row['test_name'];?>
+                       </span></b>
              
                 <br> <br>   
-                      <span class="glyphicon glyphicon-user"></span><span class="aplabel"> Disease Desc: </span>
-                    <input value="<?php echo $res2; ?>" name="ddesc"  type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/>
+                      <span class="glyphicon glyphicon-user"></span><span class="aplabel"> Visit Day: </span>
+                   <b> <span style="margin-left:60px;font-size:15px;"> 
+                   <?php echo $dob;?>
+    
+                       
+                       </span></b>
              <br> <br> 
               
-             <span class="glyphicon glyphicon-user"></span><span class="aplabel">Patient Type:</span>
-                   <b>  <input value="<?php echo $res3; ?>" name="ptype"  type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
+             <span class="glyphicon glyphicon-user"></span><span class="aplabel">Visit Time:</span>
+                   <b> <span style="margin-left:60px;font-size:15px;">  <?php echo date('h:i:s a', strtotime($time));?></span></b>
              <br> <br> 
-             <span class="fa fa-birthday-cake"></span><span class = "aplabel">Admission Date:</span><b>
-                      <input value="<?php echo $res4; ?>"  name="addate" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
-             
-             <br> <br> 
+            
             
              
               </div> 
                 
            
-            <div class="col-md-3 col-md-offset-4 inview">                
-                     <span class="glyphicon glyphicon-user"></span><span class="aplabel"> Paid Amount:</span>
-                   <b>  <input value="<?php echo $res5; ?>"  name="ipmount" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
+             <div class="col-md-3  inview">                
+                     <span class="glyphicon glyphicon-user"></span><span class="aplabel"> Blood Pressure:</span>
+                   <b> <span style="margin-left:50px;font-size:15px;"> 
+                      <?php echo $row['blood_pressure'];?>
+                       </span></b>
              
                 <br> <br>   
                  
-              <span class="fa fa-birthday-cake"></span><span class = "aplabel">Room Type:</span><b>
-                      <input value="<?php echo $res6; ?>" name="rtype"  type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
+              <span class="fa fa-birthday-cake"></span><span class = "aplabel">Temperature:</span><b>
+                      <span style="margin-left:55px;font-size:15px;"> 
+                             <?php echo $row['temperature'];?>
+                    </span></b>
              
              <br> <br> 
-             <span class="glyphicon glyphicon-user"></span><span class="aplabel">Room Number:</span>
-                   <b> <input value="<?php echo $res7; ?>" name="rnum" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/>   </b>
+             <span class="glyphicon glyphicon-user"></span><span class="aplabel">Respiratory rate:</span>
+                   <b> <span style="margin-left:50px;font-size:15px;"> <?php echo $row['respiratory_rate'];?></span></b>
              <br> <br> 
-              <span class="fa fa-birthday-cake"></span><span class = "aplabel">Discharge Date:</span><b>
-                      <input value="<?php echo $res8; ?>"  name="disdate" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
+              <span class="fa fa-birthday-cake"></span><span class = "aplabel">Pulse rate:</span><b>
+                      <span style="margin-left:20px;font-size:15px;"> 
+                            <?php echo $row['pulse_rate'];?>
+                    </span></b>
              
              <br> <br> 
-             
-              </div> 
-           
+             <span class="fa fa-birthday-cake"></span><span class = "aplabel">Concern:</span><b>
+                      <span style="margin-left:20px;font-size:15px;"> 
+                            <?php echo $row['concern'];?>
+                    </span></b>
+              </div>  
+           <!-- 
                
                 <div class="col-md-3 col-md-offset-4 outview">                
                      
                       <span class="glyphicon glyphicon-user"></span><span class="aplabel"> Paid Amount:</span>
-                   <b> <input value="<?php echo $res9; ?>" name="opmount" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/>
+                   <b> <span style="margin-left:50px;font-size:15px;"> 
+                   
+                     <?php echo $res5;?>
     
                        
-                      </b>
+                       </span></b>
              <br> <br> 
               <span class="fa fa-birthday-cake"></span><span class = "aplabel">Consultation Date:</span><b>
-                      <input value="<?php echo $res4; ?>" name="condate" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
+                      <span style="margin-left:20px;font-size:15px;"> 
+                            <?php echo $res4;?>
+                    </span></b>
              
  
             </div>
-            <!--results-->
+             -->
             
             
-                <div class="col-md-6 col-md-offset-1 upres">                
+                <!-- <div class="col-md-3  res">                
                      
                       <span class="glyphicon glyphicon-user"></span><span class="aplabel"> Results:</span>
-                   <b> <input value="<?php echo $res9; ?>" name="result" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
-             <br> <br>   <br> <br> 
-                      
+                   <b> <span style="margin-left:50px;font-size:15px;"> 
+                   
+                     <?php echo $res9;?>
+    
+                       
+                       </span></b>
+             <br> <br> 
+                     <br> <br> 
+                     <br> <br> 
               <span class="fa fa-birthday-cake"></span><span class = "aplabel">Treatment:</span><b>
-                      <input value="<?php echo $res11; ?>"   name="treat" type="text"  class="apdesc" style="margin-left:15px" autocomplete="off"/></b>
+                      <span style="margin-left:20px;font-size:15px;"> 
+                        <?php echo $res11;?>
+                    </span></b>
              
  
             </div>
-
-                 <div class="col-md-5 sub" >
-                <button class = "btn btn-primary" id="submit"   name="create" style="margin-top:100%;" > SUBMIT</button>
-               </div>
-            
-                </form>
-            
-            
-            
-            
+ -->
+       
         </div>
-            		
+                
 <div id="myModal" class="modal col-md-5 col-md-offset-4">
 
   <!-- Modal content -->
   <div class="modal-content">
 <span class="close">&times;</span>
     
-	<h1 class="text-center">Are you sure you want to logout?</h1>
+  <h1 class="text-center">Are you sure you want to logout?</h1>
     <a id="login"  href="#" class="btn btn-danger btn-lg" style="margin-left:35%;margin-right:5%;">
           <span class="glyphicon glyphicon-log-in"></span> NO
         </a>
     <a id="logout" href="logout.php" class="btn btn-success btn-lg">
           <span class="glyphicon glyphicon-log-out"></span> YES
         </a>
-	
+  
   </div>
-	
+  
   </div>
 
     </div>
@@ -234,7 +251,17 @@ window.onclick = function(event) {
     }
 }
    
-    
+      $(document).ready(function(){
+
+      $("#predatatab").DataTable({
+        "bLengthChange": false,
+        "pageLength":2,
+        "scrollCollapse": true,
+        "scrollY": "300px"
+      });
+      $('.dataTables_filter').addClass('pull-left');
+
+    });
     
     
 

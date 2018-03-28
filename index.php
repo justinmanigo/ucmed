@@ -19,7 +19,9 @@ $row = mysqli_fetch_assoc($result);
 $_SESSION["doc_id"] = $row["doctor_id"];
 $did = $_SESSION["doc_id"];
 
-
+$sql2="SELECT date_format(orderDate,'%M') AS orderMonth,COUNT(*) AS orderCount FROM orders WHERE 
+YEAR(orderDate)=2005 GROUP BY orderMonth ORDER BY MONTH(orderDate)";
+$result2=mysqli_query($conn,$sql2);
 
 
 
@@ -34,7 +36,7 @@ $did = $_SESSION["doc_id"];
 <title>UC Med | Charts</title>
 <link rel = 'stylesheet' href='css/bootstrap.min.css'>
 <link id="css" rel="stylesheet" type="text/css" href="css/homes.css">
-<link rel="stylesheet" type="text/css" href="css/fontawesome.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
 <script src="js/jquery.min.js"></script>    
 <link rel=icon href="img/ucmed.png" /> 
 
@@ -63,7 +65,10 @@ $did = $_SESSION["doc_id"];
                 
                 <a href="patientz.php" id="link"><div class="navheight"> <span>&nbsp</span> <p class="glyphicon glyphicon-list-alt centertext"></p>&nbsp PATIENTS </div></a>
                 
-                <a href="npatient.php" id="link"><div class="navheight"> <span>&nbsp</span> <p class="glyphicon glyphicon-user centertext"></p>&nbsp New PATIENTS </div></a>
+                <a href="npatient.php" id="link"><div class="navheight"> <span>&nbsp</span> <p class="fa fa-user-plus centertext"></p>&nbsp New PATIENTS </div></a>
+                
+                <a href="discharge.php" id="link">
+                <div class="navheight"><span>&nbsp&nbsp</span><p class="glyphicon glyphicon-export centertext"></p> &nbsp DISCHARGE</div></a>
                 
                  <a id="myBtn1" id="link"  ><div class=" navheight"> <span>&nbsp</span> <p class="glyphicon glyphicon-log-out centertext"></p>&nbsp LOG OUT</div></a>
         
@@ -80,41 +85,49 @@ $did = $_SESSION["doc_id"];
     <div class="modal-content  ">
         <span class="close">&times;</span>
     
-	<h1 class="text-center">Are you sure you want to logout?</h1>
-    <a id="login"  href="#" class="btn btn-danger btn-lg" style="margin-left:35%;margin-right:5%;">
-          <span class="glyphicon glyphicon-log-in"></span>   NO
-    </a>
+        <h1 class="text-center">Are you sure you want to logout?</h1>
         
-    <a id="logout" href="logout.php" class="btn btn-success btn-lg">
-          <span class="glyphicon glyphicon-log-out"></span>   YES
-    </a>
-	
+        <a id="login"  href="#" class="btn btn-danger btn-lg" style="margin-left:35%;margin-right:5%;">
+            
+              <span class="glyphicon glyphicon-log-in"></span>   NO
+        </a>
+
+        <a id="logout" href="logout.php" class="btn btn-success btn-lg">
+            
+              <span class="glyphicon glyphicon-log-out"></span>   YES
+        </a>
+    
   </div>
-	
+    
 </div>    
 
     
     
-<?php
-    echo "<div class='col-md-offset-6'>
-			<h3> WELCOME Doctor $row[doc_Fname] $row[doc_Lname] ID: $did </h3></div>";
-   
-    
-    ?>
-    
-<!--charts-->
+        <?php
+                echo "<div class='col-md-offset-5'>
+               <h1> Doctor $row[doc_Fname] $row[doc_Lname] </h1></div>";
+
+
+         ?>
+
+<!-- high charts-->
     <div class="col-md-7 col-md-offset-3 content" id="content">
+        
         <div id="container"></div>
 
     </div>
-    
+      <br><br>
     <div class="col-md-7 col-md-offset-3 content" id="content">
+        
         <div id="container1"></div>
 
     </div>
+    <br><br>
+    <br><br>
     
     <div class="col-md-7 col-md-offset-3 content" id="content">
-        <div id="container"></div>
+        
+        <div id="container2"></div>
 
     </div>
     
@@ -125,7 +138,6 @@ $did = $_SESSION["doc_id"];
  
     
 </body>
-
 </html>
 
 
@@ -134,7 +146,7 @@ $did = $_SESSION["doc_id"];
 <script src="js/jquery-3.2.1.min.js"></script>
 <script>
     
-    /*modal button function*/   
+/*modal button function*/   
 
 var modal = document.getElementById('myModal');
 var btn = document.getElementById("myBtn1");
@@ -174,7 +186,7 @@ window.onclick = function(event) {
     /*highcharts JS*/
     Highcharts.chart("container",
 {
-	 chart: {
+     chart: {
             type: 'column'
         },
         title: {
@@ -187,7 +199,10 @@ window.onclick = function(event) {
             categories: [
                 <?php
                 
-                    $sql= "SELECT date_format(diagnose_date,'%M') AS month,COUNT(*) AS patients FROM diagnosis"
+                    $sql= "SELECT date_format(diagnose_date,'%M') AS month, COUNT(*) as patients 
+FROM diagnosis
+GROUP BY month
+ORDER BY month "
 ;
 
                     $ret= mysqli_query($conn,$sql);
@@ -216,8 +231,8 @@ window.onclick = function(event) {
             name: 'Patient Visits per Month',
             data: [<?php
                 
-                    $sql= "SELECT date_format(diagnose_date,'%M') AS month,COUNT(*) AS patients FROM diagnosis"
-;
+                    $sql= "SELECT date_format(diagnose_date,'%M') AS month, COUNT(*) as patients FROM diagnosis   GROUP BY month ORDER BY month";
+
 
                     $ret= mysqli_query($conn,$sql);
                 
@@ -234,7 +249,7 @@ window.onclick = function(event) {
        
     Highcharts.chart("container1",
 {
-	 chart: {
+     chart: {
             
             type: 'line',
             marginRight: 130,
@@ -252,8 +267,8 @@ window.onclick = function(event) {
 
                     $ret= mysqli_query($conn,$sql);
                 
-                    while($row = mysqli_fetch_assoc($ret)){
-                        echo("'".$row["mostdis"]."'".",");
+                        while($row = mysqli_fetch_assoc($ret)){
+                            echo("'".$row["mostdis"]."'".",");
                     }
                 
                 ?>]
@@ -285,11 +300,71 @@ window.onclick = function(event) {
 
                     $ret= mysqli_query($conn,$sql);
                 
-                    while($row = mysqli_fetch_assoc($ret)){
-                        echo($row["patient"].",");
+                        while($row = mysqli_fetch_assoc($ret)){
+                            echo($row["patient"].",");
                     }
                 
                 ?>]
+        }]
+
+});
+
+
+    Highcharts.chart("container2",
+{
+          chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Doctor 2018 profit'
+        },
+        subtitle: {
+            text: ' '
+        },
+        xAxis: {
+            categories: [
+                <?php
+                
+                    $sql= "SELECT date_format(d.diagnose_date,'%M')as month,   SUM(paid_amount) as total FROM diagnosis d GROUP BY month ORDER BY month ASC;"
+;
+
+                    $ret= mysqli_query($conn,$sql);
+                
+                    while($row = mysqli_fetch_assoc($ret)){
+                        echo("'".$row["month"]."'".",");
+                    }
+                
+                ?>
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: ' '
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Year 2018',
+            data: [<?php
+                
+                   $sql= "SELECT date_format(d.diagnose_date,'%M')as month,   SUM(paid_amount) as total FROM diagnosis d GROUP BY month ORDER BY month ASC;"
+;
+
+                    $ret= mysqli_query($conn,$sql);
+                
+                    while($row = mysqli_fetch_assoc($ret)){
+                        echo($row["total"].",");
+                    }
+                
+                ?>]
+
         }]
 
 });

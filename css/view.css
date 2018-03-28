@@ -45,6 +45,23 @@ margin-top: -2%;
     
     
 }
+
+.contentup{
+  background-color:#fffefe ; /*#eaeaea*/ /*#eaeaea*/
+  height: 100%;
+  padding-top: 7em;
+  
+  position: relative;
+  left: 70px;
+  overflow: auto;
+    margin-left: ;
+    background-image: url('../img/up.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+}
+
 .content1{
   background-color:#fffefe ; /*#eaeaea*/ /*#eaeaea*/
   height: 100%;
@@ -277,11 +294,60 @@ margin-top: -2%;
             
         }
 
+
+
         .sub .btn:hover {
             background: #6CE3AD;
             color:white;
 
         }
+
+
+
+        .subb{
+            margin-top: 500px;
+
+        }
+        .subb .btn{
+         border: 2px solid #6CE3AD;
+            background-color: transparent;
+            
+            width: 200px;
+            
+            
+        }
+
+
+
+        .subb .btn:hover {
+            background: #6CE3AD;
+            color:white;
+
+        }
+
+
+
+
+                .up .btn{
+          border: 2px solid #6CE3AD;
+          background-color: transparent;
+          color: #00bd9c;
+            margin-top:50%;
+            margin-right: 50%;
+            float:right;
+            height:47px;
+            width:20%;
+            
+            
+            
+        }
+
+        .up .btn:hover {
+            background: #6CE3AD;
+            color:white;
+
+        }
+
 
         
 select{
@@ -325,7 +391,7 @@ select{
   padding-bottom: 1em;
   margin-left: 0.12em;
   width:15em;
-    height: 17%;
+    height: 16%;
   color: white;
 }
 
@@ -428,25 +494,29 @@ select{
 
 }
 
+
 .prebox{
-  border: solid 1px #929292;
+  border: solid 1px #6CE3AD;
     border-radius: 0.8em;
     min-height: xxx;
     overflow: hidden;
     padding: 3em;
-    margin-top: -0.2em;
+    margin-left: 40em !important;
+    margin-top: 21em !important;
     width: 40em;
+    position: fixed;
 }
 
+
 .postbox{
-  border: solid 1px #929292;
+  border: solid 1px #6CE3AD;
     border-radius: 0.8em;
     min-height: xxx;
     overflow: hidden;
     padding: 2em;
-    margin-top: -0.2em;
+    margin-top: 22em;
     width: 37em !important;
-    margin-left: 15px;
+    margin-left: 30px;
 }
 
 .postbox .btn{
@@ -545,47 +615,91 @@ select{
 .pc2{
   margin-left: 0.2em;
 }
+
+
+.dis{
+        border: solid 1px #6CE3AD;
+          border-radius: 0.8em;
+          height: 100px;
+
+}
 /*------------------------------------------------------------------*/
 
 /*view specic patient css*/
 
 
 .dis1{
-          border: solid 1px #000000;
+          border: solid 1px #6CE3AD;
           border-radius: 0.8em;
           min-height: xxx;
           overflow: hidden;
           padding: 2em;
          margin-top: 2em;
-          width: 25em;
+          width: 30em;
           margin-bottom: 10px !important;
           padding-bottom: 10px;
          position: fixed;
-            margin-left:4em;
+            margin-left:6em;
+        }
+
+    .dis11{
+          border: solid 1px #6CE3AD;
+          border-radius: 0.8em;
+          min-height: xxx;
+          overflow: hidden;
+          padding: 2em;
+         margin-top: 2em;
+          width: 30em;
+          margin-bottom: 10px !important;
+          padding-bottom: 10px;
+         position: fixed;
+            margin-left:20em;
         }
 
 
 
 .inview{
-         border: solid 1px #000000;
+         border: solid 1px #6CE3AD;
             border-radius: 0.8em;
-            margin-bottom: 10px !important;
-            padding:1em;
             position: fixed;
-            margin-top: 30px;
+            margin-left: 600px !important;
+            margin-top: 26px !important;
+            padding: 1.5em;
+            
+        }
+
+        .inviews{
+         border: solid 1px #6CE3AD;
+            border-radius: 0.8em;
+            position: fixed;
+            margin-left: 500px !important;
+            margin-top: 26px !important;
+            padding: 3em;
+            height: 1000px;
     
-    
+        }
+
+
+.inviewz{
+         border: solid 1px #6CE3AD;
+            border-radius: 0.8em;
+            position: fixed;
+            margin-left: 400px !important;
+            margin-top: 100px !important;
+            padding: 1.5em;
+            
         }
 
 
 
 .outview{
-         border: solid 1px #000000;
+         border: solid 1px #6CE3AD;
             border-radius: 0.8em;
-            margin-bottom: 10px !important;
+           
             padding:1em;
             position: fixed;
             margin-top: 30px;
+            margin-left: 550px;
     
     
 }
@@ -593,16 +707,21 @@ select{
 
 
 .res{
-      border: solid 1px #000000;
+      border: solid 1px #6CE3AD;
     border-radius: 0.8em;
     padding-bottom: 7em;
-    margin-top: 300px;
+    margin-top: 300px !important;
+    margin-left: 2em !important;
+    position: fixed;
+    padding: 3.5em;
+    width: 30%;
+    
     
         }
 
 
 .upres{
-      border: solid 1px #000000;
+      border: solid 1px #6CE3AD;
     border-radius: 0.8em;
     padding-bottom: 7em;
     margin-top: 400px;

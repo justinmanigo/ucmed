@@ -7,7 +7,8 @@
     }
 
         if(isset($_GET['pid'])){
-            $querypatient = "SELECT  patient_Fname, patient_Lname, patient_contact, address, gender, birthdate, civil_status FROM patients WHERE patient_id =".$_GET['pid'];
+            $querypatient = "SELECT  patient_Fname, patient_Lname, patient_contact, address, gender, birthdate, civil_status, patient_BloodType,
+            patient_height, patient_weight FROM patients WHERE patient_id =".$_GET['pid'];
             
             $result=mysqli_query($conn,$querypatient);
             $row=mysqli_fetch_array($result);
@@ -103,6 +104,15 @@
               <span class="glyphicon glyphicon-user"></span><span class="aplabel">Civil Status</span>
                    <b> <span style="margin-left:30px;font-size:15px;"> <?php echo $row['civil_status'];?></span></b>
              <br> <br>
+             <span class="glyphicon glyphicon-user"></span><span class="aplabel">Blood Type</span>
+                   <b> <span style="margin-left:30px;font-size:15px;"> <?php echo $row['patient_BloodType'];?></span></b>
+             <br> <br>
+             <span class="glyphicon glyphicon-user"></span><span class="aplabel">Height</span>
+                   <b> <span style="margin-left:30px;font-size:15px;"> <?php echo $row['patient_height'];?>cm</span></b>
+             <br> <br>
+             <span class="glyphicon glyphicon-user"></span><span class="aplabel">Weight</span>
+                   <b> <span style="margin-left:30px;font-size:15px;"> <?php echo $row['patient_weight'];?>kg<keygen></keygen></span></b>
+             <br> <br>
              
              
               </div>  
@@ -137,39 +147,16 @@
                     echo "<td class=' desc text-center'>".$pre[2]."</td>";
                                 
                       echo "<td class=' desc text-center'>";
-                                
-                      echo "<a href='updatespecifipatient.php?diagid=".$pre[3]."'><button id='buttonadd' class='btn btn-default neutral action'>edit</button></a>";          
-                      echo "<a href='viewspecpatient.php?diagid=".$pre[3]."'><button id='buttonadd' class='btn btn-default neutral 
-                      action'> View</button></a>";
-                        
-                        echo    "<form method = 'POST' action = 'viewpatients.php'> <button id='buttondelete' class='btn btn-default neutral action' type = 'submit'> Del</button></form>";  
+                      echo "<a href='updatespecificpatient.php?diagid=".$pre[3]."'><button id='buttonedit' class='btn btn-dange  neutral action'> EDIT</button></a>";
+                      echo "<a href='viewspecpatient.php?diagid=".$pre[3]."'><button id='buttonadd' class='btn btn-default neutral action'> View</button></a>";
                                 echo "</td>";
                                 echo "</tr>";
+                                
+                                $importantid= $pre[3];
                                 
 
                             }
                         }
-                        
-                          
-                          if(isset($_POST['buttondelete'])){
-                              
-                              $querydelete= "ALTER TABLE diagnosis
-   DROP CONSTRAINT disease_diagnosis ALTER TABLE diagnosis
-   ADD CONSTRAINT FK_T1_T2_Cascade
-   FOREIGN KEY (EmployeeID) REFERENCES dbo.T1(EmployeeID) ON DELETE CASCADE";
-                              
-                              $del= mysqli_query($conn,$querydelete);
-                              
-                              $querydelete= "DELETE * FROM diagnosis WHERE diagnosis_id = ".$pre[3];
-                              
-                              $del= mysqli_query($conn,$querydelete);
-                              
-                              echo $querydelete;
-                              
-                              header("patientz.php");
-                              
-                           }
-                        
                           
                           
                     ?>
@@ -189,23 +176,23 @@
             
             
         </div>
-            		
+                
 <div id="myModal" class="modal col-md-5 col-md-offset-4">
 
   <!-- Modal content -->
   <div class="modal-content">
 <span class="close">&times;</span>
     
-	<h1 class="text-center">Are you sure you want to logout?</h1>
+  <h1 class="text-center">Are you sure you want to logout?</h1>
     <a id="login"  href="#" class="btn btn-danger btn-lg" style="margin-left:35%;margin-right:5%;">
           <span class="glyphicon glyphicon-log-in"></span> NO
         </a>
     <a id="logout" href="logout.php" class="btn btn-success btn-lg">
           <span class="glyphicon glyphicon-log-out"></span> YES
         </a>
-	
+  
   </div>
-	
+  
   </div>
 
     

@@ -39,50 +39,12 @@ margin-top: -2%;
   left: 70px;
   overflow: auto;
     margin-left: ;
-    background-image: url('../img/npatient.png');
+    background-image: url('../img/disc.png');
     background-repeat: no-repeat;
     background-size: cover;
     
     
 }
-
-
-
-
-.content12{
-  background-color:#fffefe ; /*#eaeaea*/ /*#eaeaea*/
-  height: 100%;
-  padding-top: 7em;
-  
-  position: relative;
-  left: 70px;
-  overflow: auto;
-    margin-left: ;
-    background-image: url('../img/add.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    
-}
-
-
-
-.content123{
-  background-color:#fffefe ; /*#eaeaea*/ /*#eaeaea*/
-  height: 100%;
-  padding-top: 7em;
-  
-  position: relative;
-  left: 70px;
-  overflow: auto;
-    margin-left: ;
-    background-image: url('../img/update.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    
-} 
-
 #name{
     margin-top:-2em;
 }
@@ -142,23 +104,10 @@ margin-top: -2%;
         }
 
 
-        .box1{
-          border: solid 1px #6CE3AD;
-          border-radius: 0.8em;
-          min-height: xxx;
-          overflow: hidden;
-          padding: 1em;
-         margin-top: 2em;
-          width: 25em;
-          margin-bottom: 10px !important;
-          padding-bottom: 10px;
-         position: fixed;
-            margin-left:2em;
-        }
 
 
         .disease{
-                  margin-left: 33%; !important;
+                  margin-left:28%; !important;
                   border: solid 1px #6CE3AD;
                   border-radius: 0.8em;
                   height: 300px;
@@ -167,39 +116,13 @@ margin-top: -2%;
                 position: fixed;
                  margin-top: 2em  !important;
                  width: 25em !important;
-                margin-left: 385px !important;
+               
             
         }
 
+ 
 
-     .newdis{
-                  margin-left: 33%; !important;
-                  border: solid 1px #6CE3AD;
-                  border-radius: 0.8em;
-                  height: 200px;
-                  overflow: hidden;
-                  padding: 2em;
-                position: fixed;
-                 margin-top: 30em  !important;
-                 width: 25em !important;
-                margin-left: 30px !important;
-            
-        }
-
-        .in{
-                  margin-left: 10px !important;
-                  border: solid 1px #6CE3AD;
-                  border-radius: 0.8em;
-                  height: 200px;
-                  overflow: hidden;
-                  padding: 1em;
-                 margin-top: 2em !important;
-                 width: 28em !important;
-                 margin-bottom: 30px !important;
-                position: fixed;
-            margin-left: 750px !important;
-                
-        }
+       
 
 
 
@@ -209,87 +132,28 @@ margin-top: -2%;
          border: solid 1px #6CE3AD;
          border-radius: 0.8em;
          overflow: hidden;
-         margin-top: 320px !important;
-         margin-left: 385px !important;
+         margin-left:30%; !important;
+         margin-top: 2em  !important;
+        display:inline-block;
          position: fixed;
          padding: 1em;
          width: 350px;
-         height: 270px;
 
       
         }
 
         
-    
 
- .box11{
-          border: solid 1px #6CE3AD;
-          border-radius: 0.8em;
-          min-height: xxx;
-          overflow: hidden;
-          padding: 1em;
-         margin-top: 2em;
-          width: 25em;
-          margin-bottom: 10px !important;
-          padding-bottom: 10px;
-         position: fixed;
-            margin-left:30em;
-        }
 
-#submits{
 
-        margin-left: 40%;
-     }
 
-    
     
 
 
-        .out{
-                  margin-left: 51% !important;
-                  border: solid 1px #6CE3AD;
-                  border-radius: 0.8em;
-                  height: 250px;
-                  overflow: hidden;
-                  padding: 2em;
-                 margin-top: 2em !important;
-                 width: 25em !important;
-                 position: fixed;
-                
-               
-        }
 
 
 
-    .addDis{
-                  margin-left: 33%; !important;
-                 
-                  border-radius: 0.8em;
-                  height: 350px;
-                  overflow: hidden;
-                  padding: 2em;
-                 margin-top: 10em  !important;
-                 width: 25em !important;
-                 margin-bottom: 30px !important;
-            
-        }
-
-
-     .addTest{
-                
-                  margin-left: 33%; !important;
-                 
-                  border-radius: 0.8em;
-                  height: 350px;
-                  overflow: hidden;
-                  padding: 2em;
-                 margin-top: 10em  !important;
-                 width: 25em !important;
-                 margin-bottom: 30px !important;
-            
-        
-            
-        }
+  
 
 #addbot{
         
@@ -332,7 +196,7 @@ margin-top: -2%;
             height:47px;
             width:15%;
             position: fixed;
-         margin-top: 600px !important;
+         margin-top: 500px !important;
              margin-left: 450px !important;
 
             
@@ -382,6 +246,19 @@ select{
   
 }
 
+.box1{
+          border: solid 1px #6CE3AD;
+          border-radius: 0.8em;
+          min-height: xxx;
+          overflow: hidden;
+          padding: 1em;
+         margin-top: 2em;
+          width: 25em;
+          margin-bottom: 10px !important;
+          padding-bottom: 10px;
+         position: fixed;
+            margin-left:4em;
+        }
 
 
 .sidebar-outer {
@@ -406,7 +283,7 @@ select{
   padding-bottom: 1em;
   margin-left: 0.12em;
   width:15em;
-    height: 6em;
+    height: 17%;
   color: white;
 }
 
