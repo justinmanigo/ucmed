@@ -85,7 +85,7 @@ $result2=mysqli_query($conn,$sql2);
     <div class="modal-content  ">
         <span class="close">&times;</span>
     
-        <h1 class="text-center">Are you sure you want to logout?</h1>
+        <h1 class="text-center"  style="margin-top:30px;">Are you sure you want to logout?</h1>
         
         <a id="login"  href="#" class="btn btn-danger btn-lg" style="margin-left:35%;margin-right:5%;">
             

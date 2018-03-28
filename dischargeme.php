@@ -129,11 +129,11 @@
                    <b> <span style="margin-left:60px;font-size:15px;"> <?php echo $row['patient_height'];?>cm</span></b>
              <br> <br>
              <span class="glyphicon glyphicon-user"></span><span class="aplabel">Weight:</span>
-                   <b> <span style="margin-left:60px;font-size:15px;"> <?php echo $row['patient_weight'];?>kg<keygen></keygen></span></b>
+                   <b> <span style="margin-left:60px;font-size:15px;"> <?php echo $row['patient_weight'];?>kg<keygen></span></b>
              <br> <br>
              
              <span class="glyphicon glyphicon-user"></span><span class="aplabel">Diag ID:</span>
-                   <b> <span style="margin-left:60px;font-size:15px;"> <?php echo $row['diagnosis_id'];?><keygen></keygen></span></b>
+                   <b> <span style="margin-left:60px;font-size:15px;"> <?php echo $row['diagnosis_id'];?><keygen></span></b>
              <br> <br>
              
               </div>
@@ -228,17 +228,17 @@
         if(x<=15){
 
         console.log("ward");
-        document.getElementById("pMount").value = 20;
+        document.getElementById("pMount").value = 500;
 
         }else if(x>15 && x<=25){
 
         console.log("semi private");  
-        document.getElementById("pMount").value = 30;
+        document.getElementById("pMount").value = 1500;
 
         }else if(x>25){
 
         console.log("private");
-        document.getElementById("pMount").value = 40;
+        document.getElementById("pMount").value = 2500;
 
         }
 

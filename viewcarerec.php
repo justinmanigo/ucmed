@@ -189,67 +189,21 @@ window.onclick = function(event) {
     }
 }
    
-      $(document).ready(function(){
-
-      $("#predatatab").DataTable({
-        "bLengthChange": false,
-        "pageLength":2,
-        "scrollCollapse": true,
-        "scrollY": "300px"
-      });
-      $('.dataTables_filter').addClass('pull-left');
-
-    });
     
     
-
-$(document).ready(function(){
+    
+ 
+    
+    $(document).ready(function(){
      
-      
-    
-    
-    $("#record").DataTable({
-       "pagingType": "full_numbers",
-        "pageLength":2,
-        "searching": true
-      });
-    
-   
-   <?php 
-      
-   if($res3=="in"){
-        
-        echo"$('.outview').hide()";
-   }else if($res3=="out"){
-       echo"$('.inview').hide()";
-    }
-    
-    
-    ?>
+    $("#login").click(function(){  
+           
+        $(".modal").hide();
+         
+   });
          
       
-    
-    
-    
 });
-    
-    
-    
-    $(function times(){
-
-    var valueElement = $('#value');
-    function incrementValue(e){
-        valueElement.text(Math.max(parseInt(valueElement.text()) + e.data.increment, 0));
-        return false;
-    }
-
-    $('#plus').bind('click', {increment: 1}, incrementValue);
-
-    $('#minus').bind('click', {increment: -1}, incrementValue);
-
-    });
-    
-   
     
     
     

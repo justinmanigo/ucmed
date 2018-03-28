@@ -293,7 +293,7 @@
     <div id="modalDisease" class="modal col-md-6 col-md-offset-4">
 
                        
-      <div class="modal-content dis id=addDis">
+      <div class="modal-content dismod id=addDis">
             <span class="close1">&times;</span>
        
               <div class="col-md-6 addDis">
@@ -326,7 +326,7 @@
       <div class="modal-content">
             <span class="close">&times;</span>
 
-              <h1 class="text-center">Are you sure you want to logout?</h1>
+              <h1 class="text-center"  style="margin-top:30px;">Are you sure you want to logout?</h1>
                 <a id="login"  href="#" class="btn btn-danger btn-lg " style="margin-left:35%;margin-right:5%;">
                       <span class="glyphicon glyphicon-log-in"></span> NO </a>
                 <a id="logout" href="logout.php" class="btn btn-success btn-lg ">

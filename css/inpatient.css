@@ -189,5 +189,7 @@ input{
 }
 
 .modal-content{
-    margin-top: 10px;
+    margin-top: 30px;
+   
+    height:150px;
 }

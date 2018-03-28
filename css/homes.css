@@ -98,9 +98,10 @@ margin-top: -2%;
 }
 
 .modal-content{
-    margin-top: 10px;
+    margin-top: 30px;
+   
+    height:150px;
 }
-
    
        /*-----------------------------Side Bar-----------------------------*/
 .sidebar{
@@ -138,6 +139,7 @@ margin-top: -2%;
 	padding-bottom: 1em;
 	margin-left: 0.12em;
 	width:15em;
+    height: 6em;
     height: 6em;
 	color: white;
 }

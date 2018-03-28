@@ -28,7 +28,7 @@ if(!isset($_SESSION['username'])){
 <title>UC Med | Patients</title>
 <style>
     .tab{
-        margin-top: 1.5%;
+        margin-top: 2%;
         margin-left: 2%;
     }
 </style>
@@ -145,7 +145,7 @@ if(!isset($_SESSION['username'])){
   <div class="modal-content">
 <span class="close">&times;</span>
     
-	<h1 class="text-center">Are you sure you want to logout?</h1>
+	<h1 class="text-center" style="margin-top:30px;">Are you sure you want to logout?</h1>
     <a id="login"  href="#" class="btn btn-danger btn-lg" style="margin-left:35%;margin-right:5%;">
           <span class="glyphicon glyphicon-log-in"></span> NO
         </a>

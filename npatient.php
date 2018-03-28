@@ -297,7 +297,7 @@
 
     <div id="modalDisease" class="modal col-md-6 col-md-offset-4">
            
-         <div class="modal-content dis id=addDis">
+         <div class="modal-content dismod id=dis">
                 <span class="close1">&times;</span>
          
                   <div class="col-md-6 addDis">
@@ -307,7 +307,7 @@
                                 <br><br>
                         <span class=" fa fa-bed"></span><span class="aplabel">Disease Desc</span><input name="newDisdes" id="newDisdes" type="text" class="apdesc"  style="margin-left:35px;"/>
                                 <br><br>
-                        <button class = "btn btn-primary" id="disadd"  name="disadd" > ADD</button>
+                        <button class = "btn btn-default" id="disadd" style="margin-left:28%;height:40px;width:100px;"  name="disadd" > ADD</button>
                     </form> 
                  </div>          
        </div>
@@ -325,7 +325,7 @@
   <div class="modal-content">
 <span class="close">&times;</span>
     
-	<h1 class="text-center">Are you sure you want to logout?</h1>
+	<h1 class="text-center" style="margin-top:30px;">Are you sure you want to logout?</h1>
     <a id="login"  href="#" class="btn btn-danger btn-lg" style="margin-left:35%;margin-right:5%;">
           <span class="glyphicon glyphicon-log-in"></span> NO
         </a>

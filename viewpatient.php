@@ -159,16 +159,18 @@ if(isset($_GET['pid'])){
                 <table class=" table table-bordered " id="patienttable">
                     <thead>
                     
-                    <th class="tie text-center">Diagnose Date</th>
-                    <th class="tie text-center">Diagnosis Name</th>
+                    <th class="tie text-center">Patient In</th>
+                    <th class="tie text-center">Patient Out</th>
+                    <th class="tie text-center">Disease Name</th>
                     <th class="tie text-center">Patient Type</th>
                     <th class="tie text-center">Actions</th>
                     </thead>
                     <tbody>
                     <?php
                         
-               $viewpatient = "SELECT diagnosis.diagnose_date,disease_name,patient_type,diagnosis.diagnosis_id
+               $viewpatient = "SELECT diagnosis.diagnose_date,disease_name,patient_type,diagnosis.diagnosis_id,in_patients.discharge_date
                         FROM diagnosis 
+                        LEFT JOIN in_patients ON in_patients.diagnosis_id = diagnosis.diagnosis_id
                         JOIN patients  ON diagnosis.patient_id= patients.patient_id
                         JOIN diseases  ON diagnosis.disease_id=diseases.disease_id
                         WHERE  patients.patient_id=".$_GET['pid'];
@@ -179,7 +181,17 @@ if(isset($_GET['pid'])){
                         if($resultpre){
                             while($row = mysqli_fetch_array($resultpre)){
                                 echo "<tr>";
-                                echo "<td class=' desc text-center'>$row[0]</td>";
+                                $date = strtotime($row[0]);
+                                $doI = date("F d, Y", $date);
+                                echo "<td class=' desc text-center'>$doI</td>";
+                                $pout=($row[2]=="out")? $row[0] : $row[4];
+                                if($pout== "0000-00-00"){
+                                    $doo = "N/A";
+                                }else{
+                                $date = strtotime($pout);
+                                $doo = date("F d, Y", $date); 
+                                }
+                                 echo "<td class=' desc text-center'>$doo</td>";
                                 echo "<td class = ' desc'>$row[1]</td>";
                                 echo "<td class=' desc text-center'>$row[2]</td>";
                                // echo "<td class=' desc text-center'>$row[4]-patient</td>";
@@ -188,12 +200,7 @@ if(isset($_GET['pid'])){
                                 
                                 echo "<a href='deletediagnosis.php?diagid=".$row[3]."'> <button class='btn btn-danger'  id='butt'> Delete </button></a> ";
                                 echo "<a href='viewspecpatientz.php?diagid=".$row[3]."'><button class='btn btn-default success' style='margin-right:30px;' id='view' > <p x class='glyphicon glyphicon-eye-open' style='font-family:Champagne-&-Limousines;'></p> &nbsp&nbsp&nbsp View </button></a> ";
-                               /*
-                                if($row[5] == "male"){
-                                    echo "<a href='updatepatient.php?pid=".$row[0]."'> <button style='margin-left:30px;' class='btn btn-default neutral' id='butt'> update </button></a> ";
-                                }else{
-                                    
-                                }*/
+                             
                                
                                 echo "</td>";
                                 echo "</tr>";
@@ -220,7 +227,7 @@ if(isset($_GET['pid'])){
   <div class="modal-content">
 <span class="close">&times;</span>
     
-	<h1 class="text-center">Are you sure you want to logout?</h1>
+	<h1 class="text-center"  style="margin-top:30px;">Are you sure you want to logout?</h1>
     <a id="login"  href="#" class="btn btn-danger btn-lg" style="margin-left:35%;margin-right:5%;">
           <span class="glyphicon glyphicon-log-in"></span> NO
         </a>

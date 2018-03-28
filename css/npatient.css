@@ -209,12 +209,12 @@ margin-top: -2%;
          border: solid 1px #6CE3AD;
          border-radius: 0.8em;
          overflow: hidden;
-         margin-top: 320px !important;
+         margin-top: 330px !important;
          margin-left: 385px !important;
          position: fixed;
          padding: 1em;
          width: 350px;
-         height: 270px;
+         height: 280px;
 
       
         }
@@ -332,7 +332,7 @@ margin-top: -2%;
             height:47px;
             width:15%;
             position: fixed;
-         margin-top: 600px !important;
+         margin-top: 615px !important;
              margin-left: 450px !important;
 
             
@@ -444,19 +444,20 @@ select{
 
 }
 
-.dis{
+.dismod{
     background-image: url('../img/dis.png');
     background-repeat: no-repeat;
     background-size: cover;
-    height:500px;
+    height:500px !important;
     
     
 }
 
+
 .modal-content{
-    margin-top: 10px;
-    
-    
+    margin-top: 30px;
+   
+    height:150px;
 }
 
 

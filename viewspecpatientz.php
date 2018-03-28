@@ -202,26 +202,7 @@
             
             
             
-                <!-- <div class="col-md-3  res">                
-                     
-                      <span class="glyphicon glyphicon-user"></span><span class="aplabel"> Results:</span>
-                   <b> <span style="margin-left:50px;font-size:15px;"> 
-                   
-                     <?php echo $res9;?>
-    
-                       
-                       </span></b>
-             <br> <br> 
-                     <br> <br> 
-                     <br> <br> 
-              <span class="fa fa-birthday-cake"></span><span class = "aplabel">Prescription:</span><b>
-                      <span style="margin-left:20px;font-size:15px;"> 
-                        <?php echo $res11;?>
-                    </span></b>
-             
- 
-            </div> -->
-
+               
             <!-- dataset of tests -->
                <div class="col-md-6 postbox">
                TEST RECORDS
@@ -319,7 +300,7 @@
   <div class="modal-content">
 <span class="close">&times;</span>
     
-  <h1 class="text-center">Are you sure you want to logout?</h1>
+  <h1 class="text-center"  style="margin-top:30px;">Are you sure you want to logout?</h1>
     <a id="login"  href="#" class="btn btn-danger btn-lg" style="margin-left:35%;margin-right:5%;">
           <span class="glyphicon glyphicon-log-in"></span> NO
         </a>
@@ -384,6 +365,19 @@ window.onclick = function(event) {
       $('.dataTables_filter').addClass('pull-left');
 
     });
+    
+    
+     $(document).ready(function(){
+     
+    $("#login").click(function(){  
+           
+        $(".modal").hide();
+         
+   });
+         
+      
+});
+   
     
 
 $(document).ready(function(){

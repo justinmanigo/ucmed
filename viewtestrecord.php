@@ -131,18 +131,18 @@
 
   <!-- Modal content -->
   <div class="modal-content">
-      <span class="close">&times;</span>
-
-            <h1 class="text-center">Are you sure you want to logout?</h1>
-            <a id="login"  href="#" class="btn btn-danger btn-lg" style="margin-left:35%;margin-right:5%;">
-                  <span class="glyphicon glyphicon-log-in"></span> NO
-                </a>
-            <a id="logout" href="logout.php" class="btn btn-success btn-lg">
-                  <span class="glyphicon glyphicon-log-out"></span> YES
-                </a>
-  
+<span class="close">&times;</span>
+    
+	<h1 class="text-center"  style="margin-top:30px;">Are you sure you want to logout?</h1>
+    <a id="login"  href="#" class="btn btn-danger btn-lg" style="margin-left:35%;margin-right:5%;">
+          <span class="glyphicon glyphicon-log-in"></span> NO
+        </a>
+    <a id="logout" href="logout.php" class="btn btn-success btn-lg">
+          <span class="glyphicon glyphicon-log-out"></span> YES
+        </a>
+	
   </div>
-  
+	
   </div>
 
     </div>
@@ -155,6 +155,10 @@
 
     /*modal button function*/   
 
+
+   
+    
+    
 var modal = document.getElementById('myModal');
 var btn = document.getElementById("myBtn1");
 var span = document.getElementsByClassName("close")[0];
@@ -172,70 +176,18 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-   
-      $(document).ready(function(){
-
-      $("#predatatab").DataTable({
-        "bLengthChange": false,
-        "pageLength":2,
-        "scrollCollapse": true,
-        "scrollY": "300px"
-      });
-      $('.dataTables_filter').addClass('pull-left');
-
-    });
     
-    
-
-$(document).ready(function(){
-     
-      
-    
-    
-    $("#record").DataTable({
-       "pagingType": "full_numbers",
-        "pageLength":2,
-        "searching": true
-      });
-    
-   
-   <?php 
-      
-   if($res3=="in"){
         
-        echo"$('.outview').hide()";
-   }else if($res3=="out"){
-       echo"$('.inview').hide()";
-    }
-    
-    
-    ?>
+ $(document).ready(function(){
+     
+    $("#login").click(function(){  
+           
+        $(".modal").hide();
+         
+   });
          
       
-    
-    
-    
 });
-    
-    
-    
-    $(function times(){
-
-    var valueElement = $('#value');
-    function incrementValue(e){
-        valueElement.text(Math.max(parseInt(valueElement.text()) + e.data.increment, 0));
-        return false;
-    }
-
-    $('#plus').bind('click', {increment: 1}, incrementValue);
-
-    $('#minus').bind('click', {increment: -1}, incrementValue);
-
-    });
-    
-   
-    
-    
     
 
   
